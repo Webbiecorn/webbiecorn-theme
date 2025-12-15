@@ -95,13 +95,23 @@
   - 1200x630px afbeelding
   - URL: /wp-content/uploads/2025/12/webbiecorn-og-image.png
   - Social media sharing gereed (Facebook, LinkedIn, Twitter, WhatsApp)
+- [x] **FAQ Schema (JSON-LD) toegevoegd** ✅ 15 dec 2025
+  - 6 FAQ vragen met structured data
+  - Google Rich Results ondersteuning
+  - Hosting FAQ aangepast (alleen in combinatie met pakket)
+- [x] **Performance & SEO optimalisaties** ✅ 15 dec 2025
+  - Breadcrumbs Schema (JSON-LD) op alle subpagina's
+  - Lazy Loading voor alle afbeeldingen
+  - Service Schema op webdesign/diensten pagina's
+  - Preload critical fonts (Inter)
+  - Content Security Policy headers
+  - Custom 404 pagina met Webbiecorn styling
 
 ### Wat moet nog 🔄
 - [ ] Google Business Profile verificatie (wacht op code)
 - [ ] Foto's toevoegen aan Google Business Profile
 - [ ] Case study pagina's voor portfolio
 - [ ] Blog/nieuws sectie starten
-- [ ] FAQ Schema toevoegen (voor Google dropdowns)
 
 ---
 
