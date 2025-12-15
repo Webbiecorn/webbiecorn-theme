@@ -77,38 +77,42 @@ get_header();
 
 <!-- Hero Section - Clean Split Layout -->
 <style>
+/* Mobile-first hero styles */
 .wc-hero-v3__title {
-    font-size: 3.5rem !important;
-    font-weight: 800 !important;
-    color: #1a1a2e !important;
-    line-height: 1.2 !important;
-    margin-bottom: 24px !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    line-height: 1.2;
+    margin-bottom: 0;
+    text-align: center;
 }
-#rotatingWord {
-    color: #e30613 !important;
-    transition: opacity 0.3s ease;
-    display: inline-block;
-    min-width: 280px; /* Breedte van langste woord */
+.wc-hero-v3__rotating-line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 24px;
 }
-/* Mobile fix: voorkom verspringen door vaste hoogte */
-@media (max-width: 768px) {
+.wc-hero-v3__rotating-word {
+    color: #e30613;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+/* Desktop overrides */
+@media (min-width: 1025px) {
     .wc-hero-v3__title {
-        font-size: 2rem !important;
-        min-height: auto;
-    }
-    #rotatingWord {
-        min-width: 0;
-        display: block; /* Op eigen regel op mobiel */
-        width: 100%;
+        font-size: 3.5rem;
         text-align: left;
+        margin-bottom: 0;
     }
-}
-@media (max-width: 480px) {
-    .wc-hero-v3__title {
-        font-size: 1.75rem !important;
+    .wc-hero-v3__title-inline {
+        display: inline;
+    }
+    .wc-hero-v3__rotating-line {
+        display: inline;
+    }
+    .wc-hero-v3__rotating-word {
+        font-size: 3.5rem;
     }
 }
 </style>
@@ -127,7 +131,7 @@ get_header();
                 </div>
                 
                 <!-- Main Headline -->
-                <h1 class="wc-hero-v3__title">Wij bouwen websites die <span id="rotatingWord">converteren</span></h1>
+                <h1 class="wc-hero-v3__title"><span class="wc-hero-v3__title-inline">Wij bouwen websites die </span><span class="wc-hero-v3__rotating-line"><span id="rotatingWord" class="wc-hero-v3__rotating-word">converteren</span></span></h1>
                 
                 <!-- Subtitle -->
                 <p class="wc-hero-v3__subtitle">
@@ -229,12 +233,29 @@ document.addEventListener('DOMContentLoaded', function() {
     let i = 0;
     
     if (el) {
+        // Forceer mobile styling via inline styles
+        function applyMobileStyles() {
+            if (window.innerWidth <= 768) {
+                el.style.display = 'block';
+                el.style.textAlign = 'center';
+                el.style.width = '100%';
+                el.style.minHeight = '56px';
+            }
+        }
+        
+        // Apply on load
+        applyMobileStyles();
+        
+        // Apply on resize
+        window.addEventListener('resize', applyMobileStyles);
+        
         setInterval(function() {
             el.style.opacity = '0';
             setTimeout(function() {
                 i = (i + 1) % words.length;
                 el.textContent = words[i];
                 el.style.opacity = '1';
+                applyMobileStyles(); // Re-apply after text change
             }, 300);
         }, 2500);
     }
@@ -945,22 +966,25 @@ document.addEventListener('DOMContentLoaded', function() {
             <article class="wc-testimonial-card wc-animate" itemscope itemtype="https://schema.org/Review">
                 <div class="wc-testimonial-card__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                     <meta itemprop="ratingValue" content="5">
+                    <meta itemprop="bestRating" content="5">
                     <span>⭐⭐⭐⭐⭐</span>
                 </div>
                 <blockquote class="wc-testimonial-card__quote" itemprop="reviewBody">
                     "Webbiecorn leverde exact wat we nodig hadden: een snelle, moderne website die onze diensten perfect presenteert. De communicatie was top en de oplevering eerder dan gepland. Aanrader!"
                 </blockquote>
-                <div class="wc-testimonial-card__author">
+                <div class="wc-testimonial-card__author" itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <div class="wc-testimonial-card__avatar">
                         <span>JV</span>
                     </div>
                     <div class="wc-testimonial-card__info">
-                        <cite class="wc-testimonial-card__name" itemprop="author">Jan Vermeer</cite>
+                        <cite class="wc-testimonial-card__name" itemprop="name">Jan Vermeer</cite>
                         <span class="wc-testimonial-card__role">Eigenaar, Vermeer Installaties</span>
                     </div>
                 </div>
-                <meta itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
-                <meta itemprop="name" content="Webbiecorn">
+                <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
+                    <meta itemprop="name" content="Webbiecorn">
+                    <meta itemprop="image" content="https://webbiecorn.nl/wp-content/themes/webbiecorn-starter-v2/assets/images/logo-webbiecorn-white.png">
+                </div>
             </article>
             
             <!-- Testimonial 2 -->
@@ -968,44 +992,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="wc-testimonial-card__badge">Uitgelicht</div>
                 <div class="wc-testimonial-card__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                     <meta itemprop="ratingValue" content="5">
+                    <meta itemprop="bestRating" content="5">
                     <span>⭐⭐⭐⭐⭐</span>
                 </div>
                 <blockquote class="wc-testimonial-card__quote" itemprop="reviewBody">
                     "Eindelijk een webbureau dat begrijpt wat maatwerk betekent. Geen templates, geen gedoe — gewoon een website die snel laadt en er fantastisch uitziet. Onze conversie is met 40% gestegen!"
                 </blockquote>
-                <div class="wc-testimonial-card__author">
+                <div class="wc-testimonial-card__author" itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <div class="wc-testimonial-card__avatar wc-testimonial-card__avatar--featured">
                         <span>SB</span>
                     </div>
                     <div class="wc-testimonial-card__info">
-                        <cite class="wc-testimonial-card__name" itemprop="author">Sandra de Boer</cite>
+                        <cite class="wc-testimonial-card__name" itemprop="name">Sandra de Boer</cite>
                         <span class="wc-testimonial-card__role">Marketing Manager, TechFlow B.V.</span>
                     </div>
                 </div>
-                <meta itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
-                <meta itemprop="name" content="Webbiecorn">
+                <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
+                    <meta itemprop="name" content="Webbiecorn">
+                    <meta itemprop="image" content="https://webbiecorn.nl/wp-content/themes/webbiecorn-starter-v2/assets/images/logo-webbiecorn-white.png">
+                </div>
             </article>
             
             <!-- Testimonial 3 -->
             <article class="wc-testimonial-card wc-animate" itemscope itemtype="https://schema.org/Review">
                 <div class="wc-testimonial-card__rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
                     <meta itemprop="ratingValue" content="5">
+                    <meta itemprop="bestRating" content="5">
                     <span>⭐⭐⭐⭐⭐</span>
                 </div>
                 <blockquote class="wc-testimonial-card__quote" itemprop="reviewBody">
                     "Als startup hadden we een beperkt budget, maar Webbiecorn dacht met ons mee. Het resultaat: een professionele website waar we trots op zijn. Super fijne samenwerking!"
                 </blockquote>
-                <div class="wc-testimonial-card__author">
+                <div class="wc-testimonial-card__author" itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <div class="wc-testimonial-card__avatar">
                         <span>MK</span>
                     </div>
                     <div class="wc-testimonial-card__info">
-                        <cite class="wc-testimonial-card__name" itemprop="author">Mohammed Khalil</cite>
+                        <cite class="wc-testimonial-card__name" itemprop="name">Mohammed Khalil</cite>
                         <span class="wc-testimonial-card__role">Founder, GreenBytes</span>
                     </div>
                 </div>
-                <meta itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
-                <meta itemprop="name" content="Webbiecorn">
+                <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
+                    <meta itemprop="name" content="Webbiecorn">
+                    <meta itemprop="image" content="https://webbiecorn.nl/wp-content/themes/webbiecorn-starter-v2/assets/images/logo-webbiecorn-white.png">
+                </div>
             </article>
         </div>
         
