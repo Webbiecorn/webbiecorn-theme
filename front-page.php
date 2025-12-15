@@ -1093,14 +1093,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
                 <div class="wc-faq-modern__answer">
                     <div class="wc-faq-modern__answer-inner">
-                        <p>Dat kan, maar we bieden ook <strong>managed hosting</strong> aan vanaf €9/maand. Dit is inclusief:</p>
+                        <p>Nee, bij elk websitepakket regelen wij de hosting voor je. Dit is <strong>altijd inbegrepen</strong> bij onze diensten:</p>
                         <ul>
                             <li>Snelle SSD servers in Nederland</li>
                             <li>Gratis SSL-certificaat</li>
                             <li>Dagelijkse backups</li>
                             <li>99.9% uptime garantie</li>
                         </ul>
-                        <p><a href="/hosting/">Bekijk onze hosting pakketten →</a></p>
+                        <p>Hosting is alleen beschikbaar in combinatie met een websitepakket, niet los af te nemen.</p>
                     </div>
                 </div>
             </div>
@@ -1292,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "name": "Moet ik zelf hosting regelen?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Dat kan, maar we bieden ook managed hosting aan vanaf €9/maand. Dit is inclusief: snelle SSD servers in Nederland, gratis SSL-certificaat, dagelijkse backups en 99.9% uptime garantie."
+                "text": "Nee, bij elk websitepakket regelen wij de hosting voor je. Dit is altijd inbegrepen: snelle SSD servers in Nederland, gratis SSL-certificaat, dagelijkse backups en 99.9% uptime garantie. Hosting is alleen beschikbaar in combinatie met een websitepakket, niet los af te nemen."
             }
         },
         {
