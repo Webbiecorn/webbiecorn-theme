@@ -1265,5 +1265,63 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
 
+<!-- FAQ Schema - Structured Data for Google Rich Results -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Hoe lang duurt het bouwen van een website?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Afhankelijk van het pakket en de complexiteit: Landingspagina: 1-3 werkdagen. Bedrijfswebsite (5-10 pagina's): 1-2 weken. Webapplicatie: 3-6 weken. Dit is exclusief wachttijd op jouw feedback en content."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Wat als ik niet tevreden ben?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Elk pakket bevat 2-3 revisierondes om aanpassingen te doen. We stoppen niet tot je 100% tevreden bent! Extra revisies na de inclusieve rondes kosten €50 per ronde."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Moet ik zelf hosting regelen?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Dat kan, maar we bieden ook managed hosting aan vanaf €9/maand. Dit is inclusief: snelle SSD servers in Nederland, gratis SSL-certificaat, dagelijkse backups en 99.9% uptime garantie."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Kan ik later uitbreiden?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absoluut! Alle websites zijn gebouwd met groei in gedachten. Later toevoegen is makkelijk: extra pagina's of secties, blog of nieuws functionaliteit, integraties (CRM, analytics, etc.) en e-commerce uitbreiding."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Waarom geen WordPress pagebuilders?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Pagebuilders zoals Elementor en Divi hebben nadelen: ze zijn traag door veel onnodige code, onveilig door meer plugins, creëren afhankelijkheid, en hebben slechte SEO door opgeblazen HTML. Hand-coded sites zijn sneller, veiliger en scoren beter in Google."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Hoe werkt betaling?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Wij hanteren een transparante betalingsstructuur: Eenmalige projecten: 50% vooraf, 50% bij oplevering. Grote projecten: gefaseerde betaling mogelijk (3 termijnen). Onderhoud/hosting: maandelijks vooruit via automatische incasso. Betalen kan via bankoverschrijving of iDEAL."
+            }
+        }
+    ]
+}
+</script>
+
 <?php
 get_footer();
