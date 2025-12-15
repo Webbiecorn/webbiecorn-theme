@@ -194,10 +194,75 @@ if (is_front_page()) {
     <link rel="shortcut icon" href="<?php echo esc_url(home_url('/favicon.ico')); ?>">
     <link rel="apple-touch-icon" href="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>">
     
+    <!-- Preload Critical Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    
     <!-- Theme Color -->
     <meta name="theme-color" content="#E30613">
     <meta name="msapplication-TileColor" content="#E30613">
     
+    <!-- Breadcrumbs Schema -->
+    <?php if (!is_front_page()) : 
+        $breadcrumbs = array(
+            array('name' => 'Home', 'url' => home_url('/'))
+        );
+        if (is_page()) {
+            $breadcrumbs[] = array('name' => get_the_title(), 'url' => get_permalink());
+        } elseif (is_singular('post')) {
+            $breadcrumbs[] = array('name' => 'Blog', 'url' => home_url('/blog/'));
+            $breadcrumbs[] = array('name' => get_the_title(), 'url' => get_permalink());
+        }
+    ?>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            <?php foreach ($breadcrumbs as $index => $crumb) : ?>
+            {
+                "@type": "ListItem",
+                "position": <?php echo $index + 1; ?>,
+                "name": "<?php echo esc_js($crumb['name']); ?>",
+                "item": "<?php echo esc_url($crumb['url']); ?>"
+            }<?php echo $index < count($breadcrumbs) - 1 ? ',' : ''; ?>
+            <?php endforeach; ?>
+        ]
+    }
+    </script>
+    <?php endif; ?>
+    
+    <!-- Service Schema (voor dienstenpagina's) -->
+    <?php if (is_page('webdesign') || is_page('diensten')) : ?>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Web Design",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Webbiecorn",
+            "url": "https://webbiecorn.nl"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Netherlands"
+        },
+        "description": "Professionele maatwerk websites, 100% hand-coded. Geen templates, geen pagebuilders.",
+        "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "EUR",
+                "minPrice": "500"
+            }
+        }
+    }
+    </script>
+    <?php endif; ?>
+
     <?php wp_head(); ?>
     <style id="wc-header-critical">
     /* Critical Header Styles - Inline with !important to override any cached CSS */

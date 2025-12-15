@@ -417,3 +417,28 @@ function webbiecorn_body_classes($classes) {
     return $classes;
 }
 add_filter('body_class', 'webbiecorn_body_classes');
+
+/**
+ * Add lazy loading to all images
+ */
+function webbiecorn_lazy_load_images($content) {
+    // Add loading="lazy" to img tags that don't have it
+    $content = preg_replace(
+        '/<img(?![^>]*loading=)([^>]*)>/i',
+        '<img loading="lazy"$1>',
+        $content
+    );
+    return $content;
+}
+add_filter('the_content', 'webbiecorn_lazy_load_images');
+add_filter('post_thumbnail_html', 'webbiecorn_lazy_load_images');
+add_filter('get_avatar', 'webbiecorn_lazy_load_images');
+
+/**
+ * Add lazy loading attribute to wp_get_attachment_image
+ */
+function webbiecorn_attachment_image_attributes($attr) {
+    $attr['loading'] = 'lazy';
+    return $attr;
+}
+add_filter('wp_get_attachment_image_attributes', 'webbiecorn_attachment_image_attributes');
