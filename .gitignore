@@ -1,0 +1,37 @@
+# ===========================================
+# Webbiecorn Theme - Git Ignore
+# ===========================================
+
+# OS generated files
+.DS_Store
+.DS_Store?
+Thumbs.db
+*.log
+
+# IDE/Editor folders
+.idea/
+.vscode/
+*.sublime-*
+
+# Node modules (if you use npm/build tools)
+node_modules/
+package-lock.json
+
+# Compiled CSS/JS (regenerate from source)
+# *.min.css
+# *.min.js
+
+# Local development
+*.local.php
+.env
+.env.local
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
