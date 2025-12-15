@@ -419,8 +419,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Check if intro was already shown this session
+    function shouldShowIntro() {
+        // Use sessionStorage so it shows once per browser session
+        if (sessionStorage.getItem('webbiecorn_intro_shown')) {
+            return false;
+        }
+        sessionStorage.setItem('webbiecorn_intro_shown', 'true');
+        return true;
+    }
+    
+    // Skip intro - hide immediately
+    function skipIntro() {
+        intro.style.display = 'none';
+        document.body.classList.remove('intro-active');
+    }
+    
     // Animation sequence - SLOWER TIMING (+1 second)
     function startIntro() {
+        // Check if we should show intro
+        if (!shouldShowIntro()) {
+            skipIntro();
+            return;
+        }
+        
         // Phase 1: Corner cracks appear first (0.5s)
         setTimeout(() => {
             cracks.classList.add('phase-1');
