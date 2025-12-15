@@ -90,6 +90,26 @@ get_header();
 #rotatingWord {
     color: #e30613 !important;
     transition: opacity 0.3s ease;
+    display: inline-block;
+    min-width: 280px; /* Breedte van langste woord */
+}
+/* Mobile fix: voorkom verspringen door vaste hoogte */
+@media (max-width: 768px) {
+    .wc-hero-v3__title {
+        font-size: 2rem !important;
+        min-height: auto;
+    }
+    #rotatingWord {
+        min-width: 0;
+        display: block; /* Op eigen regel op mobiel */
+        width: 100%;
+        text-align: left;
+    }
+}
+@media (max-width: 480px) {
+    .wc-hero-v3__title {
+        font-size: 1.75rem !important;
+    }
 }
 </style>
 <section class="wc-hero-v3" id="heroSection">
