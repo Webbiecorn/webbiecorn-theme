@@ -50,14 +50,26 @@ function webbiecorn_starter_setup() {
     
     // Add responsive embeds support
     add_theme_support('responsive-embeds');
+    
+    // WooCommerce Support
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
 }
 add_action('after_setup_theme', 'webbiecorn_starter_setup');
 
 /**
  * Enqueue Scripts and Styles
+ * Optimized: Local GSAP, conditional CSS loading
  */
 function webbiecorn_starter_scripts() {
-    // Google Fonts - Inter
+    $theme_uri = get_template_directory_uri();
+    $version = '2.2.0';
+    
+    // =========================================================================
+    // FONTS
+    // =========================================================================
     wp_enqueue_style(
         'webbiecorn-fonts',
         'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap',
@@ -65,22 +77,60 @@ function webbiecorn_starter_scripts() {
         null
     );
     
-    // Main stylesheet
+    // =========================================================================
+    // CSS - Base (always loaded)
+    // =========================================================================
+    wp_enqueue_style('wc-base', $theme_uri . '/assets/css/base.css', array('webbiecorn-fonts'), $version);
+    wp_enqueue_style('wc-header', $theme_uri . '/assets/css/header.css', array('wc-base'), $version);
+    wp_enqueue_style('wc-buttons', $theme_uri . '/assets/css/buttons.css', array('wc-base'), $version);
+    wp_enqueue_style('wc-footer', $theme_uri . '/assets/css/footer.css', array('wc-base'), $version);
+    wp_enqueue_style('wc-animations', $theme_uri . '/assets/css/animations.css', array('wc-base'), $version);
+    wp_enqueue_style('wc-responsive', $theme_uri . '/assets/css/responsive.css', array('wc-base'), $version);
+    wp_enqueue_style('wc-cookie', $theme_uri . '/assets/css/cookie-consent.css', array('wc-base'), $version);
+    
+    // Main stylesheet (fallback for any remaining styles)
     wp_enqueue_style(
         'webbiecorn-starter-style',
         get_stylesheet_uri(),
-        array('webbiecorn-fonts'),
-        '2.1.0'
+        array('wc-base'),
+        $version
     );
     
     // =========================================================================
-    // GSAP Animation Library (Free Plugins)
+    // CSS - Conditional Loading (per page type)
+    // =========================================================================
+    
+    // Homepage
+    if (is_front_page()) {
+        wp_enqueue_style('wc-hero', $theme_uri . '/assets/css/hero.css', array('wc-base'), $version);
+        wp_enqueue_style('wc-services', $theme_uri . '/assets/css/services.css', array('wc-base'), $version);
+        wp_enqueue_style('wc-homepage-sections', $theme_uri . '/assets/css/homepage-sections.css', array('wc-base'), $version);
+    }
+    
+    // Portfolio page - V2 clean design
+    if (is_page('portfolio') || is_page('projecten')) {
+        wp_enqueue_style('wc-portfolio-v2', $theme_uri . '/assets/css/portfolio-v2.css', array('wc-base'), $version);
+    }
+    
+    // Service pages with pricing
+    if (is_page('webdesign') || is_page('diensten') || is_page('hosting') || is_page('onderhoud') || is_page('branding') || is_page('seo-analyse')) {
+        wp_enqueue_style('wc-pricing', $theme_uri . '/assets/css/pricing.css', array('wc-base'), $version);
+        wp_enqueue_style('wc-pages', $theme_uri . '/assets/css/pages.css', array('wc-base'), $version);
+    }
+    
+    // Other pages
+    if (is_page() && !is_front_page()) {
+        wp_enqueue_style('wc-pages', $theme_uri . '/assets/css/pages.css', array('wc-base'), $version);
+    }
+    
+    // =========================================================================
+    // GSAP Animation Library - LOCAL (no CDN dependency)
     // =========================================================================
     
     // GSAP Core
     wp_enqueue_script(
         'gsap',
-        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        $theme_uri . '/assets/js/vendor/gsap.min.js',
         array(),
         '3.12.5',
         true
@@ -89,49 +139,78 @@ function webbiecorn_starter_scripts() {
     // ScrollTrigger - scroll-based animations
     wp_enqueue_script(
         'gsap-scrolltrigger',
-        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js',
+        $theme_uri . '/assets/js/vendor/ScrollTrigger.min.js',
         array('gsap'),
         '3.12.5',
         true
     );
     
-    // Observer - touch/scroll/pointer detection
-    wp_enqueue_script(
-        'gsap-observer',
-        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js',
-        array('gsap'),
-        '3.12.5',
-        true
-    );
+    // Observer - touch/scroll/pointer detection (only on pages that need it)
+    if (is_front_page() || is_page('portfolio')) {
+        wp_enqueue_script(
+            'gsap-observer',
+            $theme_uri . '/assets/js/vendor/Observer.min.js',
+            array('gsap'),
+            '3.12.5',
+            true
+        );
+    }
     
-    // TextPlugin - text animation effects (free)
-    wp_enqueue_script(
-        'gsap-textplugin',
-        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js',
-        array('gsap'),
-        '3.12.5',
-        true
-    );
+    // TextPlugin - text animation effects (only on homepage)
+    if (is_front_page()) {
+        wp_enqueue_script(
+            'gsap-textplugin',
+            $theme_uri . '/assets/js/vendor/TextPlugin.min.js',
+            array('gsap'),
+            '3.12.5',
+            true
+        );
+    }
     
     // Main JavaScript (depends on GSAP)
     wp_enqueue_script(
         'webbiecorn-starter-script',
-        get_template_directory_uri() . '/assets/js/main.js',
+        $theme_uri . '/assets/js/main.js',
         array('gsap', 'gsap-scrolltrigger'),
-        '2.1.0',
+        $version,
         true
     );
     
     // GSAP Animations - global site animations
     wp_enqueue_script(
         'webbiecorn-animations',
-        get_template_directory_uri() . '/assets/js/animations.js',
+        $theme_uri . '/assets/js/animations.js',
         array('gsap', 'gsap-scrolltrigger'),
-        '2.1.0',
+        $version,
         true
     );
+    
+    // Portfolio V2 - scroll animations (only on portfolio page)
+    if (is_page('portfolio') || is_page('projecten')) {
+        wp_enqueue_script(
+            'webbiecorn-portfolio-v2',
+            $theme_uri . '/assets/js/portfolio-v2.js',
+            array('gsap', 'gsap-scrolltrigger'),
+            $version,
+            true
+        );
+    }
 }
 add_action('wp_enqueue_scripts', 'webbiecorn_starter_scripts');
+
+/**
+ * Add defer attribute to GSAP scripts for better performance
+ */
+function webbiecorn_defer_scripts($tag, $handle, $src) {
+    $defer_scripts = array('gsap', 'gsap-scrolltrigger', 'gsap-observer', 'gsap-textplugin', 'webbiecorn-animations', 'webbiecorn-portfolio-v2');
+    
+    if (in_array($handle, $defer_scripts)) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+    
+    return $tag;
+}
+add_filter('script_loader_tag', 'webbiecorn_defer_scripts', 10, 3);
 
 /**
  * Custom Walker for Navigation
@@ -442,3 +521,36 @@ function webbiecorn_attachment_image_attributes($attr) {
     return $attr;
 }
 add_filter('wp_get_attachment_image_attributes', 'webbiecorn_attachment_image_attributes');
+
+/**
+ * Disable WordPress emoji scripts (not needed, causes CSP issues)
+ */
+function webbiecorn_disable_emojis() {
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+    
+    // Remove from TinyMCE
+    add_filter('tiny_mce_plugins', 'webbiecorn_disable_emojis_tinymce');
+    add_filter('wp_resource_hints', 'webbiecorn_disable_emojis_remove_dns_prefetch', 10, 2);
+}
+add_action('init', 'webbiecorn_disable_emojis');
+
+function webbiecorn_disable_emojis_tinymce($plugins) {
+    if (is_array($plugins)) {
+        return array_diff($plugins, array('wpemoji'));
+    }
+    return array();
+}
+
+function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
+    if ('dns-prefetch' == $relation_type) {
+        $emoji_svg_url = apply_filters('emoji_svg_url', 'https://s.w.org/images/core/emoji/2/svg/');
+        $urls = array_diff($urls, array($emoji_svg_url));
+    }
+    return $urls;
+}

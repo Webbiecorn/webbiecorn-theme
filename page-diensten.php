@@ -11,16 +11,43 @@
 get_header();
 ?>
 
-<!-- Page Hero -->
-<section class="wc-page-hero">
+<!-- Page Hero - Same style as Contact/Over Ons -->
+<section class="wc-contact-hero">
+    <div class="wc-contact-hero__bg">
+        <div class="wc-contact-hero__gradient"></div>
+        <div class="wc-contact-hero__pattern"></div>
+    </div>
+    
     <div class="wc-container">
-        <div class="wc-page-hero__content wc-animate">
-            <span class="wc-page-hero__kicker">Onze Diensten</span>
-            <h1 class="wc-page-hero__title">Alles wat je nodig hebt om online te groeien</h1>
-            <p class="wc-page-hero__subtitle">
+        <div class="wc-contact-hero__content">
+            <span class="wc-contact-hero__badge" style="background: rgba(147, 51, 234, 0.1); border-color: rgba(147, 51, 234, 0.3); color: #a855f7;">
+                <span class="wc-contact-hero__badge-dot" style="background: #a855f7;"></span>
+                Onze Diensten
+            </span>
+            
+            <h1 class="wc-contact-hero__title">
+                Alles wat je nodig hebt om <span class="wc-text-gradient">online te groeien</span>
+            </h1>
+            
+            <p class="wc-contact-hero__subtitle">
                 Van een professionele website tot een sterke merkidentiteit en betere vindbaarheid. 
                 Wij helpen ondernemers en startups om online impact te maken.
             </p>
+            
+            <div class="wc-contact-hero__stats">
+                <span class="wc-contact-stat">
+                    <span class="wc-contact-stat__icon">🎨</span>
+                    <span class="wc-contact-stat__text">Webdesign & Development</span>
+                </span>
+                <span class="wc-contact-stat">
+                    <span class="wc-contact-stat__icon">🚀</span>
+                    <span class="wc-contact-stat__text">SEO & Marketing</span>
+                </span>
+                <span class="wc-contact-stat">
+                    <span class="wc-contact-stat__icon">🛡️</span>
+                    <span class="wc-contact-stat__text">Hosting & Onderhoud</span>
+                </span>
+            </div>
         </div>
     </div>
 </section>

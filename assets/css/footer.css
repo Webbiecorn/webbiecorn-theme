@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.wc-footer {
+  background: var(--wc-gradient-dark);
+  color: var(--wc-white);
+  padding: var(--wc-space-4xl) 0 var(--wc-space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.wc-footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--wc-space-3xl);
+  margin-bottom: var(--wc-space-3xl);
+}
+
+.wc-footer__brand {
+  max-width: 300px;
+}
+
+.wc-footer__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--wc-space-sm);
+  margin-bottom: var(--wc-space-lg);
+}
+
+.wc-footer__logo-icon {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wc-footer__logo-icon img {
+  height: 60px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.wc-footer__logo-text {
+  font-weight: 800;
+  font-size: var(--wc-text-lg);
+}
+
+.wc-footer__description {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--wc-text-sm);
+  line-height: 1.7;
+}
+
+.wc-footer__heading {
+  font-size: var(--wc-text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--wc-space-lg);
+  color: var(--wc-white);
+}
+
+.wc-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wc-space-sm);
+}
+
+.wc-footer__link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--wc-text-sm);
+  transition: color var(--wc-transition-fast);
+}
+
+.wc-footer__link:hover {
+  color: var(--wc-white);
+}
+
+.wc-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--wc-space-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wc-footer__copyright {
+  font-size: var(--wc-text-sm);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.wc-footer__social {
+  display: flex;
+  gap: var(--wc-space-md);
+}
+
+.wc-footer__social-link {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--wc-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wc-white);
+  transition: all var(--wc-transition-fast);
+}
+
+.wc-footer__social-link:hover {
+  background: var(--wc-primary);
+  transform: translateY(-3px);
+}
+

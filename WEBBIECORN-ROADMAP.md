@@ -1,6 +1,6 @@
 # 🦄 WEBBIECORN ROADMAP
 
-> **Laatst bijgewerkt:** 15 december 2025  
+> **Laatst bijgewerkt:** 20 december 2025  
 > **Status:** Actief in ontwikkeling  
 > **Doel:** Van manifest naar winstgevend bedrijf
 
@@ -10,7 +10,7 @@
 
 **Website:** https://webbiecorn.nl  
 **Thema:** webbiecorn-starter-v2 (custom WordPress theme)  
-**Hosting:** Hostinger (SSH poort 65002)
+**Hosting:** Hostinger
 
 ### Wat is AF ✅
 - [x] Custom WordPress thema gebouwd
@@ -106,6 +106,30 @@
   - Preload critical fonts (Inter)
   - Content Security Policy headers
   - Custom 404 pagina met Webbiecorn styling
+- [x] **Performance Quick Wins** ✅ 20 dec 2025
+  - Logo burst intro animatie volledig verwijderd (3.3s laadtijd bespaard)
+  - ~210 regels intro CSS verwijderd uit style.css
+  - ~330 regels inline intro JavaScript verwijderd uit front-page.php
+  - Backup bestanden verwijderd (page-portfolio.php.backup, page-portfolio.php.bak)
+  - Hreflang tags toegevoegd (nl-NL + x-default) voor internationale SEO
+- [x] **CSS Splitsing & Conditioneel Laden** ✅ 20 dec 2025
+  - CSS gesplitst in 13 modulaire bestanden in `/assets/css/`
+  - Conditioneel laden per pagina type (homepage, portfolio, pricing, etc.)
+  - Base CSS (tokens, reset, typography): altijd geladen (~5KB)
+  - Page-specific CSS: alleen geladen waar nodig
+  - Verwachte besparing: ~60-70% minder CSS per pagina
+- [x] **GSAP Lokaal Gebundeld** ✅ 20 dec 2025
+  - GSAP + plugins gedownload naar `/assets/js/vendor/`
+  - Geen CDN dependency meer (was 5 externe requests)
+  - Observer & TextPlugin: conditioneel laden (alleen homepage/portfolio)
+  - Defer attribute toegevoegd voor betere rendering
+  - Fallback class `.no-gsap` voor als GSAP niet laadt
+- [x] **Animatie Conflicten Opgelost** ✅ 20 dec 2025
+  - Dubbele header scroll animatie verwijderd uit animations.js
+  - main.js behoudt header scroll effect (`.scrolled` class)
+  - GSAP beschikbaarheid check toegevoegd met fallback
+  - ScrollTrigger beschikbaarheid check toegevoegd
+  - Alle keyframes verplaatst naar animations.css
 
 ### Wat moet nog 🔄
 - [ ] Google Business Profile verificatie (wacht op code)
@@ -495,10 +519,7 @@ Dynamische SEO in `header.php` met unieke meta data per pagina:
 - `WEBBIECORN-SERVICE-MANIFEST.md` - Service details
 
 ### Server toegang
-- Host: 147.93.92.120
-- SSH Poort: 65002
-- User: u265705302
-- Remote path: ~/domains/webbiecorn.nl/public_html
+> ⚠️ **Credentials niet in Git** - Zie lokale `.env` of Hostinger dashboard
 
 ### Workflow
 1. Bestanden lokaal bewerken in `/home/kevin/webbiecorn-wordpress/`

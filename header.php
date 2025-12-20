@@ -88,6 +88,10 @@ if (is_front_page()) {
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="<?php echo is_front_page() ? esc_url(home_url('/')) : esc_url(get_permalink()); ?>">
     
+    <!-- Hreflang Tags -->
+    <link rel="alternate" hreflang="nl-NL" href="<?php echo is_front_page() ? esc_url(home_url('/')) : esc_url(get_permalink()); ?>">
+    <link rel="alternate" hreflang="x-default" href="<?php echo is_front_page() ? esc_url(home_url('/')) : esc_url(get_permalink()); ?>">
+    
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="<?php echo is_singular('post') ? 'article' : 'website'; ?>">
     <meta property="og:url" content="<?php echo is_front_page() ? esc_url(home_url('/')) : esc_url(get_permalink()); ?>">
@@ -105,7 +109,56 @@ if (is_front_page()) {
     <meta name="twitter:description" content="<?php echo esc_attr($seo_data['description']); ?>">
     <meta name="twitter:image" content="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-og-image.png')); ?>">
     
-    <!-- Structured Data / Schema.org -->
+    <!-- Structured Data / Schema.org - Organization (voor Google Knowledge Panel) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://webbiecorn.nl/#organization",
+        "name": "Webbiecorn",
+        "alternateName": "Webbiecorn Studio",
+        "description": "Technische webstudio voor maatwerk websites, branding en digitale groei. Hand-coded, geen templates.",
+        "url": "https://webbiecorn.nl",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://webbiecorn.nl/wp-content/uploads/2025/12/webbiecorn-logo-red.png",
+            "width": 512,
+            "height": 512
+        },
+        "image": "https://webbiecorn.nl/wp-content/uploads/2025/12/webbiecorn-og-image.png",
+        "sameAs": [
+            "https://www.linkedin.com/company/webbiecorn",
+            "https://www.instagram.com/webbiecorn.studio",
+            "https://twitter.com/webbiecorn",
+            "https://github.com/Webbiecorn"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "info@webbiecorn.nl",
+            "availableLanguage": ["Dutch", "English"],
+            "areaServed": "NL"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "NL",
+            "addressRegion": "Zuid-Holland"
+        },
+        "foundingDate": "2024",
+        "slogan": "Maatwerk websites die converteren",
+        "knowsAbout": [
+            "Web Design",
+            "Web Development", 
+            "WordPress",
+            "Branding",
+            "SEO",
+            "UI/UX Design",
+            "Custom Web Applications"
+        ]
+    }
+    </script>
+    
+    <!-- LocalBusiness Schema (voor lokale SEO) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -115,21 +168,27 @@ if (is_front_page()) {
         "url": "https://webbiecorn.nl",
         "logo": "https://webbiecorn.nl/wp-content/uploads/2025/12/webbiecorn-logo-red.png",
         "image": "https://webbiecorn.nl/wp-content/uploads/2025/12/webbiecorn-og-image.png",
-        "priceRange": "€€",
+        "priceRange": "€€-€€€",
         "address": {
             "@type": "PostalAddress",
-            "addressCountry": "NL"
+            "addressCountry": "NL",
+            "addressRegion": "Zuid-Holland"
         },
         "geo": {
             "@type": "GeoCoordinates",
             "addressCountry": "NL"
         },
+        "telephone": "+31-6-12345678",
+        "email": "info@webbiecorn.nl",
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
             "availableLanguage": ["Dutch", "English"]
         },
-        "sameAs": [],
+        "sameAs": [
+            "https://www.linkedin.com/company/webbiecorn",
+            "https://www.instagram.com/webbiecorn.studio"
+        ],
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -140,7 +199,7 @@ if (is_front_page()) {
             "@type": "Country",
             "name": "Netherlands"
         },
-        "serviceType": ["Webdesign", "Web Development", "Branding", "SEO"]
+        "serviceType": ["Webdesign", "Web Development", "Branding", "SEO", "Website Onderhoud"]
     }
     </script>
     <?php if (is_front_page()) : ?>

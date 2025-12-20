@@ -2,13 +2,34 @@
  * Webbiecorn Global GSAP Animations
  * 
  * Handles all scroll-triggered and interaction animations site-wide.
- * Uses GSAP 3.12.5 with ScrollTrigger (free plugins only)
+ * Uses GSAP 3.12.5 with ScrollTrigger (locally hosted, no CDN dependency)
+ * 
+ * @version 2.2.0
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // =========================================================================
+    // GSAP AVAILABILITY CHECK
+    // =========================================================================
+    
+    if (typeof gsap === 'undefined') {
+        console.warn('Webbiecorn: GSAP not loaded, using CSS fallbacks');
+        document.body.classList.add('no-gsap');
+        // Show all elements that would be animated
+        document.querySelectorAll('.wc-animate, [data-animate]').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+        return;
+    }
+    
     // Register GSAP plugins
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    } else {
+        console.warn('Webbiecorn: ScrollTrigger not loaded, scroll animations disabled');
+    }
     
     // =========================================================================
     // CONFIGURATION
@@ -36,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Skip animations if user prefers reduced motion
     if (config.prefersReducedMotion) {
         // Still show elements, just no animation
-        document.querySelectorAll('[data-animate]').forEach(el => {
+        document.querySelectorAll('[data-animate], .wc-animate').forEach(el => {
             el.style.opacity = '1';
             el.style.transform = 'none';
         });
@@ -493,32 +514,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 start: 'top top',
                 end: 'bottom bottom',
                 scrub: 0.3
-            }
-        });
-    }
-    
-    // =========================================================================
-    // NAVIGATION ANIMATIONS
-    // =========================================================================
-    
-    // Header hide/show on scroll
-    const header = document.querySelector('.wc-header, header');
-    if (header) {
-        let lastScrollY = 0;
-        
-        ScrollTrigger.create({
-            start: 'top -80',
-            onUpdate: (self) => {
-                const scrollY = window.scrollY;
-                const direction = scrollY > lastScrollY ? 'down' : 'up';
-                
-                if (direction === 'down' && scrollY > 100) {
-                    gsap.to(header, { y: -100, duration: 0.3, ease: 'power2.out' });
-                } else {
-                    gsap.to(header, { y: 0, duration: 0.3, ease: 'power2.out' });
-                }
-                
-                lastScrollY = scrollY;
             }
         });
     }

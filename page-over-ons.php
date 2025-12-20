@@ -8,107 +8,46 @@
 get_header();
 ?>
 
-<!-- Page Hero with GSAP Animations -->
-<section class="wc-page-hero wc-page-hero--about">
-    <!-- Animated Background -->
-    <div class="wc-about-hero__bg">
-        <div class="wc-about-hero__particles"></div>
-        <div class="wc-about-hero__glow"></div>
+<!-- Hero - Same style as Contact page -->
+<section class="wc-contact-hero wc-about-hero">
+    <div class="wc-contact-hero__bg">
+        <div class="wc-contact-hero__gradient"></div>
+        <div class="wc-contact-hero__pattern"></div>
     </div>
     
     <div class="wc-container">
-        <span class="wc-page-hero__kicker wc-about-hero__kicker">👋 Hey, welkom!</span>
-        <h1 class="wc-page-hero__title wc-about-hero__title">
-            <span class="wc-split-line">Wij zijn</span>
-            <span class="wc-split-line wc-split-line--accent">Webbiecorn</span>
-        </h1>
-        <p class="wc-page-hero__subtitle wc-about-hero__subtitle">
-            Een kleine, wendbare studio die grote dingen bouwt. 
-            Van slimme webapps tot opvallende websites — altijd met passie en precisie.
-        </p>
+        <div class="wc-contact-hero__content">
+            <span class="wc-contact-hero__badge" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); color: #3b82f6;">
+                <span class="wc-contact-hero__badge-dot" style="background: #3b82f6;"></span>
+                Hey, welkom!
+            </span>
+            
+            <h1 class="wc-contact-hero__title">
+                Wij zijn <span class="wc-text-gradient">Webbiecorn</span>
+            </h1>
+            
+            <p class="wc-contact-hero__subtitle">
+                Een kleine, wendbare studio die grote dingen bouwt. 
+                Van slimme webapps tot opvallende websites — altijd met passie en precisie.
+            </p>
+            
+            <div class="wc-contact-hero__stats">
+                <span class="wc-contact-stat">
+                    <span class="wc-contact-stat__icon">🚀</span>
+                    <span class="wc-contact-stat__text">Opgericht in 2024</span>
+                </span>
+                <span class="wc-contact-stat">
+                    <span class="wc-contact-stat__icon">💡</span>
+                    <span class="wc-contact-stat__text">100% maatwerk</span>
+                </span>
+                <span class="wc-contact-stat">
+                    <span class="wc-contact-stat__icon">🎯</span>
+                    <span class="wc-contact-stat__text">Resultaatgericht</span>
+                </span>
+            </div>
+        </div>
     </div>
 </section>
-
-<!-- GSAP CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<!-- About Hero Animation Script -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Register ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Split text into individual characters
-    const splitLines = document.querySelectorAll('.wc-split-line');
-    splitLines.forEach(line => {
-        const text = line.textContent;
-        line.innerHTML = '';
-        text.split('').forEach((char, i) => {
-            const span = document.createElement('span');
-            span.className = 'wc-char';
-            span.textContent = char === ' ' ? '\u00A0' : char;
-            span.style.display = 'inline-block';
-            line.appendChild(span);
-        });
-    });
-    
-    // Master timeline
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    
-    // Animate background glow
-    tl.fromTo('.wc-about-hero__glow', 
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1 }
-    );
-    
-    // Animate kicker badge with bounce
-    tl.fromTo('.wc-about-hero__kicker',
-        { y: -50, opacity: 0, scale: 0.8 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' },
-        '-=0.5'
-    );
-    
-    // Animate each character with wave effect
-    tl.fromTo('.wc-char',
-        { y: 80, opacity: 0, rotateX: -90 },
-        { 
-            y: 0, 
-            opacity: 1, 
-            rotateX: 0,
-            duration: 0.8, 
-            stagger: 0.02,
-            ease: 'back.out(1.2)'
-        },
-        '-=0.3'
-    );
-    
-    // Animate subtitle
-    tl.fromTo('.wc-about-hero__subtitle',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
-        '-=0.4'
-    );
-    
-    // Continuous floating animation for particles
-    gsap.to('.wc-about-hero__particles', {
-        backgroundPosition: '100% 100%',
-        duration: 20,
-        repeat: -1,
-        ease: 'none'
-    });
-    
-    // Subtle glow pulse
-    gsap.to('.wc-about-hero__glow', {
-        scale: 1.1,
-        opacity: 0.8,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-    });
-});
-</script>
 
 <!-- Meet The Founder Section -->
 <section class="wc-section wc-section--dark wc-about-team">

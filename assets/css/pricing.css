@@ -1,0 +1,1175 @@
+   Pricing Section V2 - Modern Cards
+   ========================================================================== */
+
+.wc-section--pricing-v2 {
+  background: #fafafa;
+  padding: 100px 0;
+}
+
+.wc-pricing-v2__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.wc-pricing-v2__title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--wc-dark);
+  margin-bottom: 16px;
+}
+
+.wc-pricing-v2__subtitle {
+  font-size: 1.125rem;
+  color: var(--wc-text-light);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Pricing Cards Grid */
+.wc-pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 1100px) {
+  .wc-pricing-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .wc-pricing-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Individual Price Card */
+.wc-price-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 28px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.wc-price-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Featured Card */
+.wc-price-card--featured {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: none;
+  box-shadow: 0 10px 40px rgba(26, 26, 46, 0.3);
+}
+
+.wc-price-card--featured:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(26, 26, 46, 0.4);
+}
+
+.wc-price-card--featured .wc-price-card__name,
+.wc-price-card--featured .wc-price-card__amount {
+  color: white;
+}
+
+.wc-price-card--featured .wc-price-card__tagline,
+.wc-price-card--featured .wc-price-card__from {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.wc-price-card--featured .wc-price-card__features li {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.wc-price-card--featured .wc-price-card__features svg {
+  color: #4ade80;
+}
+
+.wc-price-card--featured .wc-price-card__icon {
+  background: rgba(227, 6, 19, 0.2);
+  color: var(--wc-primary);
+}
+
+/* Ribbon */
+.wc-price-card__ribbon {
+  position: absolute;
+  top: 16px;
+  right: -8px;
+  background: var(--wc-primary);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 4px 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(227, 6, 19, 0.3);
+}
+
+.wc-price-card__ribbon::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  border: 4px solid transparent;
+  border-top-color: #a00510;
+  border-right-color: #a00510;
+}
+
+/* Card Header */
+.wc-price-card__header {
+  margin-bottom: 24px;
+}
+
+.wc-price-card__icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(227, 6, 19, 0.1);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--wc-primary);
+}
+
+.wc-price-card__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--wc-dark);
+  margin-bottom: 4px;
+}
+
+.wc-price-card__tagline {
+  font-size: 0.875rem;
+  color: var(--wc-text-light);
+}
+
+/* Pricing */
+.wc-price-card__pricing {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.wc-price-card--featured .wc-price-card__pricing {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.wc-price-card__from {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--wc-text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.wc-price-card__amount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--wc-dark);
+  line-height: 1;
+}
+
+.wc-price-card__period {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+/* Features List */
+.wc-price-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  flex-grow: 1;
+}
+
+.wc-price-card__features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--wc-text);
+  padding: 8px 0;
+}
+
+.wc-price-card__features svg {
+  flex-shrink: 0;
+  color: var(--wc-primary);
+}
+
+/* Button */
+.wc-price-card__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--wc-dark);
+  border: 1px solid transparent;
+}
+
+.wc-price-card__btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateX(4px);
+}
+
+.wc-price-card__btn--primary {
+  background: var(--wc-primary);
+  color: white;
+}
+
+.wc-price-card__btn--primary:hover {
+  background: #c00511;
+  box-shadow: 0 8px 24px rgba(227, 6, 19, 0.3);
+  transform: translateY(-2px);
+}
+
+.wc-price-card--featured .wc-price-card__btn:not(.wc-price-card__btn--primary) {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.wc-price-card--featured .wc-price-card__btn:not(.wc-price-card__btn--primary):hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* CTA Banner */
+.wc-pricing-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
+  padding: 40px 48px;
+}
+
+@media (max-width: 768px) {
+  .wc-pricing-cta {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+  }
+}
+
+.wc-pricing-cta__content {
+  flex: 1;
+}
+
+.wc-pricing-cta__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.wc-pricing-cta__text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   Pricing Overview Tiles - LEGACY (keeping for compatibility)
+   ========================================================================== */
+
+.wc-pricing-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--wc-space-md);
+}
+
+@media (max-width: 1024px) {
+  .wc-pricing-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .wc-pricing-overview {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wc-pricing-tile {
+  background: var(--wc-white);
+  border-radius: var(--wc-radius-lg);
+  padding: var(--wc-space-lg);
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.wc-pricing-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.wc-pricing-tile--featured {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  grid-row: span 2;
+}
+
+.wc-pricing-tile--featured .wc-pricing-tile__title,
+.wc-pricing-tile--featured .wc-pricing-tile__desc,
+.wc-pricing-tile--featured .wc-pricing-tile__highlights,
+.wc-pricing-tile--featured .wc-pricing-tile__from {
+  color: rgba(255,255,255,0.9);
+}
+
+.wc-pricing-tile--featured .wc-pricing-tile__amount {
+  color: white;
+}
+
+.wc-pricing-tile--featured:hover {
+  box-shadow: 0 20px 50px rgba(227, 6, 19, 0.2);
+}
+
+.wc-pricing-tile--cta {
+  background: linear-gradient(135deg, rgba(227, 6, 19, 0.05) 0%, rgba(227, 6, 19, 0.1) 100%);
+  border: 2px dashed rgba(227, 6, 19, 0.3);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wc-pricing-tile__icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(227, 6, 19, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--wc-space-sm);
+  color: var(--wc-primary);
+}
+
+.wc-pricing-tile--featured .wc-pricing-tile__icon {
+  background: rgba(227, 6, 19, 0.2);
+  color: var(--wc-primary);
+}
+
+.wc-pricing-tile--cta .wc-pricing-tile__icon {
+  background: rgba(227, 6, 19, 0.15);
+  margin-bottom: var(--wc-space-md);
+}
+
+.wc-pricing-tile__badge {
+  position: absolute;
+  top: var(--wc-space-sm);
+  right: var(--wc-space-sm);
+  background: var(--wc-primary);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wc-pricing-tile__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--wc-dark);
+}
+
+.wc-pricing-tile__desc {
+  font-size: 0.875rem;
+  color: var(--wc-gray);
+  margin-bottom: var(--wc-space-sm);
+  line-height: 1.4;
+}
+
+.wc-pricing-tile__price {
+  margin-bottom: var(--wc-space-sm);
+}
+
+.wc-pricing-tile__from {
+  font-size: 0.75rem;
+  color: var(--wc-gray);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.wc-pricing-tile__amount {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--wc-dark);
+}
+
+.wc-pricing-tile__period {
+  font-size: 0.875rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.wc-pricing-tile__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--wc-space-md) 0;
+  font-size: 0.8rem;
+  color: var(--wc-gray);
+  flex-grow: 1;
+}
+
+.wc-pricing-tile__highlights li {
+  padding: 4px 0;
+  position: relative;
+  padding-left: 16px;
+}
+
+.wc-pricing-tile__highlights li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--wc-primary);
+  font-weight: 700;
+}
+
+.wc-pricing-tile .wc-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Pricing Cards - Webdesign Page (Original Design)
+   ========================================================================== */
+
+.wc-pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--wc-space-lg);
+  margin-bottom: var(--wc-space-2xl);
+}
+
+@media (max-width: 900px) {
+  .wc-pricing {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Individual Card */
+.wc-pricing__card {
+  background: var(--wc-white);
+  border-radius: var(--wc-radius-lg);
+  padding: var(--wc-space-xl);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: pricingCardIn 0.6s ease forwards;
+}
+
+.wc-pricing__card:nth-child(1) { animation-delay: 0.1s; }
+.wc-pricing__card:nth-child(2) { animation-delay: 0.25s; }
+.wc-pricing__card:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pricingCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wc-pricing__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Featured Card */
+.wc-pricing__card--featured {
+  background: linear-gradient(135deg, var(--wc-primary) 0%, #c41010 100%);
+  color: var(--wc-white);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.wc-pricing__card--featured:hover {
+  transform: scale(1.05) translateY(-8px);
+}
+
+@media (max-width: 900px) {
+  .wc-pricing__card--featured {
+    transform: none;
+  }
+  .wc-pricing__card--featured:hover {
+    transform: translateY(-8px);
+  }
+}
+
+/* Popular Badge */
+.wc-pricing__popular {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--wc-secondary);
+  color: var(--wc-white);
+  padding: 0.4rem 1.25rem;
+  border-radius: 50px;
+  font-size: var(--wc-text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Header */
+.wc-pricing__header {
+  text-align: center;
+  margin-bottom: var(--wc-space-lg);
+}
+
+.wc-pricing__badge {
+  display: inline-block;
+  background: rgba(227, 6, 19, 0.1);
+  color: var(--wc-primary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: var(--wc-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--wc-space-sm);
+}
+
+.wc-pricing__badge--light {
+  background: rgba(255,255,255,0.2);
+  color: var(--wc-white);
+}
+
+.wc-pricing__title {
+  font-size: var(--wc-text-xl);
+  font-weight: 800;
+  margin-bottom: var(--wc-space-xs);
+}
+
+.wc-pricing__card--featured .wc-pricing__title {
+  color: var(--wc-white);
+}
+
+.wc-pricing__subtitle {
+  font-size: var(--wc-text-sm);
+  opacity: 0.7;
+}
+
+/* Price */
+.wc-pricing__price {
+  text-align: center;
+  padding: var(--wc-space-lg) 0;
+  margin-bottom: var(--wc-space-lg);
+  border-bottom: 1px solid var(--wc-border);
+}
+
+.wc-pricing__card--featured .wc-pricing__price {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.wc-pricing__currency {
+  font-size: var(--wc-text-xl);
+  font-weight: 700;
+  vertical-align: top;
+  margin-right: 2px;
+}
+
+.wc-pricing__amount {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.wc-pricing__range {
+  font-size: var(--wc-text-lg);
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+/* Highlights */
+.wc-pricing__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--wc-space-lg);
+}
+
+.wc-pricing__highlights li {
+  display: flex;
+  align-items: center;
+  gap: var(--wc-space-sm);
+  padding: 0.6rem 0;
+  font-size: var(--wc-text-sm);
+  font-weight: 500;
+}
+
+.wc-pricing__check {
+  color: #10B981;
+  font-weight: 700;
+}
+
+.wc-pricing__card--featured .wc-pricing__check {
+  color: #86EFAC;
+}
+
+/* Expandable Details */
+.wc-pricing__details {
+  margin-bottom: var(--wc-space-lg);
+  border-radius: var(--wc-radius-sm);
+  overflow: hidden;
+}
+
+.wc-pricing__details summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--wc-bg-alt);
+  font-size: var(--wc-text-sm);
+  font-weight: 600;
+  color: var(--wc-primary);
+  cursor: pointer;
+  border-radius: var(--wc-radius-sm);
+  transition: all 0.2s ease;
+  list-style: none;
+}
+
+.wc-pricing__details summary::-webkit-details-marker {
+  display: none;
+}
+
+.wc-pricing__details summary::after {
+  content: '+';
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.wc-pricing__details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.wc-pricing__details summary:hover {
+  background: rgba(227, 6, 19, 0.1);
+}
+
+.wc-pricing__card--featured .wc-pricing__details summary {
+  background: rgba(255,255,255,0.15);
+  color: var(--wc-white);
+}
+
+.wc-pricing__card--featured .wc-pricing__details summary:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.wc-pricing__details ul {
+  list-style: none;
+  padding: var(--wc-space-md);
+  margin: 0;
+  background: var(--wc-bg-alt);
+  border-radius: 0 0 var(--wc-radius-sm) var(--wc-radius-sm);
+  animation: detailsSlideIn 0.3s ease;
+}
+
+@keyframes detailsSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wc-pricing__card--featured .wc-pricing__details ul {
+  background: rgba(255,255,255,0.1);
+}
+
+.wc-pricing__details li {
+  padding: 0.4rem 0;
+  font-size: var(--wc-text-xs);
+  color: var(--wc-text-light);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.wc-pricing__details li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--wc-primary);
+}
+
+.wc-pricing__card--featured .wc-pricing__details li {
+  color: rgba(255,255,255,0.8);
+}
+
+.wc-pricing__card--featured .wc-pricing__details li::before {
+  color: rgba(255,255,255,0.6);
+}
+
+/* Buttons */
+.wc-btn--outline-dark {
+  background: transparent;
+  border: 2px solid var(--wc-secondary);
+  color: var(--wc-secondary);
+}
+
+.wc-btn--outline-dark:hover {
+  background: var(--wc-secondary);
+  color: var(--wc-white);
+}
+
+.wc-btn--white {
+  background: var(--wc-white);
+  color: var(--wc-primary);
+  border: none;
+}
+
+.wc-btn--white:hover {
+  background: var(--wc-bg-alt);
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.wc-pricing__footer {
+  text-align: center;
+}
+
+.wc-pricing__more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--wc-space-sm);
+  padding: 1rem 2rem;
+  background: var(--wc-bg-alt);
+  border-radius: 50px;
+  color: var(--wc-secondary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: var(--wc-space-lg);
+}
+
+.wc-pricing__more:hover {
+  background: var(--wc-secondary);
+  color: var(--wc-white);
+  transform: translateX(5px);
+}
+
+.wc-pricing__more svg {
+  transition: transform 0.3s ease;
+}
+
+.wc-pricing__more:hover svg {
+  transform: translateX(5px);
+}
+
+.wc-pricing__terms {
+  font-size: var(--wc-text-sm);
+  color: var(--wc-text-light);
+}
+
+/* ==========================================================================
+   Pricing Section - Enhanced WOW Effects
+   ========================================================================== */
+
+/* Section Background with subtle gradient */
+.wc-section--pricing {
+  background: linear-gradient(180deg, var(--wc-white) 0%, #f8f9fc 50%, var(--wc-white) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.wc-section--pricing::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(227, 6, 19, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wc-section--pricing::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(30, 58, 138, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Floating Glow behind Featured Card */
+.wc-pricing__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(227, 6, 19, 0.4) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  opacity: 0.6;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Shine Effect on Featured Card */
+.wc-pricing__shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: skewX(-20deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.wc-pricing__card--featured:hover .wc-pricing__shine {
+  animation: shine 0.8s ease forwards;
+}
+
+@keyframes shine {
+  to {
+    left: 150%;
+  }
+}
+
+/* Enhanced Card Borders */
+.wc-pricing__card {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.wc-pricing__card--featured {
+  border: none;
+  box-shadow: 0 25px 50px -12px rgba(227, 6, 19, 0.25);
+  overflow: hidden;
+}
+
+/* Subtle floating animation for cards on hover */
+.wc-pricing__card:hover {
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.12),
+    0 0 0 1px rgba(227, 6, 19, 0.1);
+}
+
+/* Badge improvements */
+.wc-pricing__popular {
+  animation: badgePop 0.5s ease 0.5s both;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+@keyframes badgePop {
+  0% { transform: translateX(-50%) scale(0); }
+  50% { transform: translateX(-50%) scale(1.2); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* Price number animation */
+.wc-pricing__amount {
+  background: linear-gradient(135deg, currentColor 0%, currentColor 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.wc-pricing__card--featured .wc-pricing__amount {
+  text-shadow: 0 2px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Button improvements */
+.wc-pricing__card .wc-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.wc-pricing__card .wc-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.wc-pricing__card .wc-btn:hover::before {
+  left: 100%;
+}
+
+/* More link enhancement */
+.wc-pricing__more {
+  position: relative;
+  overflow: hidden;
+}
+
+.wc-pricing__more::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--wc-secondary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.wc-pricing__more:hover::before {
+  width: 80%;
+}
+
+/* Subtle grid pattern overlay */
+.wc-pricing {
+  position: relative;
+}
+
+.wc-pricing::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+  background-image: 
+    linear-gradient(rgba(227, 6, 19, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(227, 6, 19, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  animation: gridFadeIn 1s ease 0.3s forwards;
+}
+
+@keyframes gridFadeIn {
+  to { opacity: 1; }
+}
+
+/* ==========================================================================
+   Pricing Cards - OVERRIDE: All white cards with hover glow effect
+   ========================================================================== */
+
+/* Reset: Remove featured styling, all cards white */
+.wc-pricing__card--featured {
+  background: var(--wc-white) !important;
+  color: var(--wc-text) !important;
+  transform: none !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+
+.wc-pricing__card--featured:hover {
+  transform: translateY(-8px) !important;
+}
+
+.wc-pricing__card--featured .wc-pricing__title,
+.wc-pricing__card--featured .wc-pricing__check,
+.wc-pricing__card--featured .wc-pricing__details summary,
+.wc-pricing__card--featured .wc-pricing__details li {
+  color: inherit !important;
+}
+
+.wc-pricing__card--featured .wc-pricing__badge--light {
+  background: rgba(227, 6, 19, 0.1) !important;
+  color: var(--wc-primary) !important;
+}
+
+.wc-pricing__card--featured .wc-pricing__price {
+  border-color: var(--wc-border) !important;
+}
+
+.wc-pricing__card--featured .wc-pricing__details summary {
+  background: var(--wc-bg-alt) !important;
+  color: var(--wc-primary) !important;
+}
+
+.wc-pricing__card--featured .wc-pricing__details ul {
+  background: var(--wc-bg-alt) !important;
+}
+
+/* ===== NEW: Hover glow effect for ALL cards ===== */
+
+.wc-pricing__card {
+  overflow: hidden;
+}
+
+/* Red glow overlay on hover */
+.wc-pricing__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(227, 6, 19, 0.08) 0%, rgba(227, 6, 19, 0.03) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: var(--wc-radius-lg);
+}
+
+.wc-pricing__card:hover::before {
+  opacity: 1;
+}
+
+/* Shine sweep effect on hover */
+.wc-pricing__card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(227, 6, 19, 0.1),
+    rgba(255, 255, 255, 0.3),
+    rgba(227, 6, 19, 0.1),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wc-pricing__card:hover::after {
+  animation: cardShine 0.8s ease forwards;
+}
+
+@keyframes cardShine {
+  0% { left: -100%; }
+  100% { left: 150%; }
+}
+
+/* Red border glow on hover */
+.wc-pricing__card:hover {
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.1),
+    0 0 0 2px rgba(227, 6, 19, 0.15),
+    0 0 30px rgba(227, 6, 19, 0.1);
+}
+
+/* Ensure card content stays above effects */
+.wc-pricing__header,
+.wc-pricing__price,
+.wc-pricing__highlights,
+.wc-pricing__details,
+.wc-pricing__card .wc-btn,
+.wc-pricing__popular {
+  position: relative;
+  z-index: 2;
+}
+
+/* Remove the old glow div styling (no longer used) */
+.wc-pricing__glow,
+.wc-pricing__shine {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Pricing Cards - Final Polish
+   ========================================================================== */
+
+/* Equal height cards with CTA at bottom */
+.wc-pricing {
+  align-items: stretch;
+}
+
+.wc-pricing__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.wc-pricing__details {
+  flex-grow: 1;
+}
+
+.wc-pricing__card .wc-btn {
+  margin-top: auto;
+}
+
+/* Hide old popular badge */
+.wc-pricing__popular {
+  display: none !important;
+}
+
+/* Recommended card - subtle red tint */
+.wc-pricing__card--recommended {
+  background: linear-gradient(135deg, rgba(227, 6, 19, 0.03) 0%, rgba(227, 6, 19, 0.01) 100%);
+  border: 2px solid rgba(227, 6, 19, 0.15);
+}
+
+.wc-pricing__card--recommended:hover {
+  border-color: rgba(227, 6, 19, 0.3);
+}
+
+/* Star indicator next to title */
+.wc-pricing__star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, var(--wc-primary) 0%, #ff4444 100%);
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  margin-left: 8px;
+  vertical-align: middle;
+  box-shadow: 0 2px 8px rgba(227, 6, 19, 0.3);
+  animation: starPulse 2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+  0%, 100% { box-shadow: 0 2px 8px rgba(227, 6, 19, 0.3); }
+  50% { box-shadow: 0 2px 15px rgba(227, 6, 19, 0.5); }
+}
+
+/* Override: recommended hover effect stronger */
+.wc-pricing__card--recommended::before {
+  background: linear-gradient(135deg, rgba(227, 6, 19, 0.12) 0%, rgba(227, 6, 19, 0.06) 100%) !important;
+}
+
+/* ==========================================================================
