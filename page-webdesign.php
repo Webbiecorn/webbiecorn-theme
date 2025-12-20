@@ -9,26 +9,27 @@
  */
 
 get_header();
-?>
 
-<!-- Page Hero -->
-<section class="wc-page-hero">
-    <div class="wc-container">
-        <div class="wc-page-hero__content wc-animate">
-            <span class="wc-page-hero__kicker">Webdesign & Development</span>
-            <h1 class="wc-page-hero__title">Websites die werken — op maat gebouwd</h1>
-            <p class="wc-page-hero__subtitle">
-                Geen templates, geen pagebuilders. Alleen schone code, snelle laadtijden en een design dat past bij jouw merk. Kies het pakket dat bij je past.
-            </p>
-        </div>
-    </div>
-</section>
+// Hero via template part
+get_template_part('template-parts/hero', null, array(
+    'badge_text'   => 'Webdesign & Development',
+    'badge_color'  => 'blue',
+    'title'        => 'Websites die werken — op maat gebouwd',
+    'title_accent' => 'op maat gebouwd',
+    'subtitle'     => 'Geen templates, geen pagebuilders. Alleen schone code, snelle laadtijden en een design dat past bij jouw merk. Kies het pakket dat bij je past.',
+    'stats'        => array(
+        array('icon' => '⚡', 'text' => '<1s laadtijd'),
+        array('icon' => '🎨', 'text' => '100% maatwerk'),
+        array('icon' => '📱', 'text' => 'Mobile-first'),
+    )
+));
+?>
 
 <!-- Why Webbiecorn -->
 <section class="wc-section">
     <div class="wc-container">
         <div class="wc-why__grid">
-            <div class="wc-why__item wc-animate">
+            <div class="wc-why__item wc-card wc-card--hover wc-animate">
                 <div class="wc-why__icon">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
@@ -37,7 +38,7 @@ get_header();
                 <h3 class="wc-why__title">Supersnel</h3>
                 <p class="wc-why__desc">Hand-coded websites laden tot 3x sneller dan template-sites. Goed voor bezoekers én Google.</p>
             </div>
-            <div class="wc-why__item wc-animate">
+            <div class="wc-why__item wc-card wc-card--hover wc-animate">
                 <div class="wc-why__icon">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
@@ -48,7 +49,7 @@ get_header();
                 <h3 class="wc-why__title">100% Maatwerk</h3>
                 <p class="wc-why__desc">Geen standaard template waar je merk in geperst wordt. Alles wordt specifiek voor jou ontworpen.</p>
             </div>
-            <div class="wc-why__item wc-animate">
+            <div class="wc-why__item wc-card wc-card--hover wc-animate">
                 <div class="wc-why__icon">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
@@ -59,7 +60,7 @@ get_header();
                 <h3 class="wc-why__title">Transparant</h3>
                 <p class="wc-why__desc">Vaste prijzen, duidelijke doorlooptijden en heldere communicatie. Geen verrassingen achteraf.</p>
             </div>
-            <div class="wc-why__item wc-animate">
+            <div class="wc-why__item wc-card wc-card--hover wc-animate">
                 <div class="wc-why__icon">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -79,8 +80,8 @@ get_header();
 <section class="wc-laptops-showcase">
     <div class="wc-container">
         <div class="wc-laptops-intro" data-animate="laptops-intro">
-            <h2 class="wc-laptops-intro__title">Voorbeelden per branche</h2>
-            <p class="wc-laptops-intro__desc">Klik op een laptop om te zien hoe jouw website eruit kan zien</p>
+            <h2 class="wc-laptops-intro__title">Wat krijg je per branche?</h2>
+            <p class="wc-laptops-intro__desc">Klik op een laptop om te zien welke functies en inhoud jouw website standaard bevat voor jouw branche.</p>
         </div>
         
         <!-- 6 Laptops Grid -->
@@ -1109,27 +1110,14 @@ get_header();
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="wc-section wc-section--dark">
-    <div class="wc-container">
-        <div class="wc-cta wc-animate">
-            <h2 class="wc-cta__title">Klaar om te starten?</h2>
-            <p class="wc-cta__text">Vertel ons over je project. We reageren binnen 24 uur met een vrijblijvende offerte.</p>
-            <div class="wc-cta__buttons">
-                <a href="<?php echo home_url('/#contact'); ?>" class="wc-btn wc-btn--primary wc-btn--large">
-                    Offerte aanvragen
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="mailto:info@webbiecorn.nl" class="wc-btn wc-btn--outline wc-btn--large">
-                    Direct mailen
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+get_template_part('template-parts/cta-footer', null, array(
+    'title' => 'Klaar om te starten?',
+    'text' => 'Vertel ons over je project. We reageren binnen 24 uur met een vrijblijvende offerte.',
+    'primary' => array('label' => 'Offerte aanvragen', 'url' => home_url('/contact/')),
+    'secondary' => array('label' => 'Direct mailen', 'url' => 'mailto:info@webbiecorn.nl'),
+));
+?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

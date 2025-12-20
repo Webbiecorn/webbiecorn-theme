@@ -6,19 +6,21 @@
  */
 
 get_header();
-?>
 
-<!-- Page Hero -->
-<section class="wc-page-hero">
-    <div class="wc-container">
-        <span class="wc-page-hero__kicker">🎨 Branding & Identiteit</span>
-        <h1 class="wc-page-hero__title">Een merk dat blijft hangen</h1>
-        <p class="wc-page-hero__subtitle">
-            Van logo tot complete huisstijl. We ontwerpen visuele identiteiten die jouw bedrijf 
-            professioneel en herkenbaar maken — op elk touchpoint.
-        </p>
-    </div>
-</section>
+// Hero via template part
+get_template_part('template-parts/hero', null, array(
+    'badge_text'   => 'Branding & Identiteit',
+    'badge_color'  => 'purple',
+    'title'        => 'Een merk dat blijft hangen',
+    'title_accent' => 'blijft hangen',
+    'subtitle'     => 'Van logo tot complete huisstijl. We ontwerpen visuele identiteiten die jouw bedrijf professioneel en herkenbaar maken — op elk touchpoint.',
+    'stats'        => array(
+        array('icon' => '🎨', 'text' => 'Logo ontwerp'),
+        array('icon' => '📋', 'text' => 'Huisstijl'),
+        array('icon' => '✨', 'text' => 'Visual identity'),
+    )
+));
+?>
 
 <!-- Why Branding -->
 <section class="wc-section wc-section--white">

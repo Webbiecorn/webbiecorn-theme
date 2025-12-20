@@ -8221,7 +8221,20 @@ body.menu-open .wc-menu-toggle span:last-child {
 /* Main Contact Section */
 .wc-contact-main {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+  position: relative;
+}
+
+.wc-contact-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
 }
 
 .wc-contact-layout {
@@ -8393,6 +8406,55 @@ body.menu-open .wc-menu-toggle span:last-child {
 .wc-contact-location__hint {
   font-size: 0.85rem;
   color: var(--wc-text-light);
+}
+
+/* Location Method Card */
+.wc-contact-method--location {
+  background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.wc-contact-method--location .wc-contact-method__icon {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+}
+
+/* Response Time Badge */
+.wc-contact-response-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.wc-contact-response-badge__pulse {
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+}
+
+.wc-contact-response-badge__text {
+  font-size: 0.9rem;
+  color: #065f46;
+}
+
+.wc-contact-response-badge__text strong {
+  font-weight: 700;
 }
 
 /* Social Buttons */
@@ -8611,12 +8673,42 @@ body.menu-open .wc-menu-toggle span:last-child {
   border-radius: 16px;
   padding: 25px 30px;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .wc-process-simple__step:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(227, 6, 19, 0.3);
   transform: translateY(-3px);
+}
+
+/* Clickable Process Steps */
+.wc-process-simple__step--clickable {
+  cursor: pointer;
+  position: relative;
+}
+
+.wc-process-simple__step--clickable::after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.wc-process-simple__step--clickable:hover::after {
+  opacity: 1;
+  color: var(--wc-primary);
+  right: 15px;
+}
+
+.wc-process-simple__step--clickable:hover {
+  border-color: var(--wc-primary);
+  background: rgba(227, 6, 19, 0.1);
 }
 
 .wc-process-simple__icon {
@@ -9804,24 +9896,26 @@ a.wc-contact-info__value:hover {
   transform: rotate(180deg);
 }
 
-.wc-value-card--new .wc-value-card__icon {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  display: block;
+.wc-value-card--new .wc-value-card__title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 18px;
   position: relative;
   z-index: 1;
-  animation: iconFloat 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(227, 6, 19, 0.3));
+  text-shadow: 0 2px 16px rgba(0,0,0,0.7);
+  letter-spacing: -0.5px;
 }
 
-.wc-value-card--new:hover .wc-value-card__icon {
-  transform: scale(1.15) translateY(-5px) rotate(10deg);
-  filter: drop-shadow(0 0 20px rgba(227, 6, 19, 0.5));
-  animation-play-state: paused;
+.wc-value-card--new .wc-value-card__desc {
+  font-size: 1.15rem;
+  color: #e5e7eb;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
 }
-
-.wc-value-card--new .wc-value-card__title {
-  font-size: 1.3rem;
   font-weight: 700;
   color: white;
   margin-bottom: 12px;

@@ -1,0 +1,18 @@
+{
+  "name": "Webbiecorn (example)",
+  "host": "<HOST>",
+  "protocol": "sftp",
+  "port": <SSH_PORT>,
+  "username": "<USER>",
+
+  "remotePath": "<REMOTE_PATH>/wp-content/themes/webbiecorn-starter-v2",
+
+  "uploadOnSave": true,
+  "connectTimeout": 30000,
+
+  "ignore": [
+    ".vscode",
+    ".git",
+    "node_modules"
+  ]
+}

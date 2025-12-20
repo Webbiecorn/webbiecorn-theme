@@ -6,19 +6,21 @@
  */
 
 get_header();
-?>
 
-<!-- Page Hero -->
-<section class="wc-page-hero">
-    <div class="wc-container">
-        <span class="wc-page-hero__kicker">🔧 Onderhoud & Support</span>
-        <h1 class="wc-page-hero__title">Jouw website in topvorm</h1>
-        <p class="wc-page-hero__subtitle">
-            Een website is nooit "af". Updates, backups, beveiliging en snelle support — 
-            we regelen het zodat jij je kunt focussen op je business.
-        </p>
-    </div>
-</section>
+// Hero via template part
+get_template_part('template-parts/hero', null, array(
+    'badge_text'   => 'Onderhoud & Support',
+    'badge_color'  => 'green',
+    'title'        => 'Jouw website in topvorm',
+    'title_accent' => 'topvorm',
+    'subtitle'     => 'Een website is nooit "af". Updates, backups, beveiliging en snelle support — we regelen het zodat jij je kunt focussen op je business.',
+    'stats'        => array(
+        array('icon' => '🔒', 'text' => 'Beveiliging'),
+        array('icon' => '💾', 'text' => 'Dagelijkse backups'),
+        array('icon' => '🚀', 'text' => 'Updates & support'),
+    )
+));
+?>
 
 <!-- Why Maintenance -->
 <section class="wc-section wc-section--white">

@@ -241,27 +241,13 @@ get_template_part('template-parts/hero', null, array(
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="wc-section wc-section--cta">
-    <div class="wc-container">
-        <div class="wc-cta wc-animate">
-            <h2 class="wc-cta__title">Klaar om te starten?</h2>
-            <p class="wc-cta__text">
-                Vertel ons over je project en we nemen binnen 24 uur contact op. 
-                Vrijblijvend en gratis.
-            </p>
-            <div class="wc-cta__buttons">
-                <a href="/contact/" class="wc-btn wc-btn--primary wc-btn--lg">
-                    Project bespreken
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                    </svg>
-                </a>
-                <a href="/portfolio/" class="wc-btn wc-btn--outline wc-btn--lg">Bekijk portfolio</a>
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+get_template_part('template-parts/cta-footer', null, array(
+    'title' => 'Klaar om te starten?',
+    'text' => 'Vertel ons over je project en we nemen binnen 24 uur contact op. Vrijblijvend en gratis.',
+    'primary' => array('label' => 'Project bespreken', 'url' => home_url('/contact/')),
+    'secondary' => array('label' => 'Bekijk portfolio', 'url' => home_url('/portfolio/')),
+));
+?>
 
 <?php get_footer(); ?>

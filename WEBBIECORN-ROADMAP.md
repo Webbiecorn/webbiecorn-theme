@@ -1,6 +1,6 @@
 # 🦄 WEBBIECORN ROADMAP
 
-> **Laatst bijgewerkt:** 20 december 2025  
+> **Laatst bijgewerkt:** 21 december 2025  
 > **Status:** Actief in ontwikkeling  
 > **Doel:** Van manifest naar winstgevend bedrijf
 
@@ -518,14 +518,8 @@ Dynamische SEO in `header.php` met unieke meta data per pagina:
 - `style.css` - Hoofdstylesheet
 - `WEBBIECORN-SERVICE-MANIFEST.md` - Service details
 
-### Server toegang
-> ⚠️ **Credentials niet in Git** - Zie lokale `.env` of Hostinger dashboard
-
-### Workflow
-1. Bestanden lokaal bewerken in `/home/kevin/webbiecorn-wordpress/`
-2. Upload via SCP naar server
-3. Test via https://webbiecorn.nl
-4. Bij cache problemen: Hostinger hPanel → Purge Cache
+### Deploy
+- Zie `DEPLOY.md` (één centrale, veilige deploy-handleiding).
 
 ---
 

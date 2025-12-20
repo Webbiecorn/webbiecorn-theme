@@ -27,6 +27,7 @@ $badge_color  = $args['badge_color'] ?? 'green';
 $title        = $args['title'] ?? '';
 $title_accent = $args['title_accent'] ?? '';
 $subtitle     = $args['subtitle'] ?? '';
+$cta          = $args['cta'] ?? null;
 $stats        = $args['stats'] ?? array();
 
 // Build badge class
@@ -67,6 +68,29 @@ if ($title_accent) {
             <p class="wc-contact-hero__subtitle">
                 <?php echo esc_html($subtitle); ?>
             </p>
+            <?php endif; ?>
+
+            <?php
+            $cta_label = '';
+            $cta_url = '';
+            $cta_variant = 'outline';
+            if (is_array($cta)) {
+                $cta_label = $cta['label'] ?? '';
+                $cta_url = $cta['url'] ?? '';
+                $cta_variant = $cta['variant'] ?? $cta_variant;
+            }
+            $cta_variant_class = in_array($cta_variant, array('primary', 'secondary', 'outline'), true) ? $cta_variant : 'outline';
+            ?>
+            <?php if ($cta_label && $cta_url) : ?>
+            <div class="wc-contact-hero__cta">
+                <a href="<?php echo esc_url($cta_url); ?>" class="wc-btn wc-btn--<?php echo esc_attr($cta_variant_class); ?> wc-btn--large">
+                    <?php echo esc_html($cta_label); ?>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </a>
+            </div>
             <?php endif; ?>
             
             <?php if (!empty($stats)) : ?>

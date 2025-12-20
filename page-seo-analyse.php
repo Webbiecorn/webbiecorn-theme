@@ -6,19 +6,21 @@
  */
 
 get_header();
-?>
 
-<!-- Page Hero -->
-<section class="wc-page-hero">
-    <div class="wc-container">
-        <span class="wc-page-hero__kicker">🔍 SEO & Analyse</span>
-        <h1 class="wc-page-hero__title">Word gevonden door je ideale klanten</h1>
-        <p class="wc-page-hero__subtitle">
-            Geen bezoekers = geen omzet. We helpen je website hoger ranken in Google 
-            met technische SEO, content optimalisatie en heldere rapportages.
-        </p>
-    </div>
-</section>
+// Hero via template part
+get_template_part('template-parts/hero', null, array(
+    'badge_text'   => 'SEO & Analyse',
+    'badge_color'  => 'blue',
+    'title'        => 'Word gevonden door je ideale klanten',
+    'title_accent' => 'gevonden',
+    'subtitle'     => 'Geen bezoekers = geen omzet. We helpen je website hoger ranken in Google met technische SEO, content optimalisatie en heldere rapportages.',
+    'stats'        => array(
+        array('icon' => '📈', 'text' => 'Hogere ranking'),
+        array('icon' => '🔍', 'text' => 'Technische SEO'),
+        array('icon' => '📊', 'text' => 'Heldere rapportages'),
+    )
+));
+?>
 
 <!-- What is SEO -->
 <section class="wc-section wc-section--white">

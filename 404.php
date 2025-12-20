@@ -15,33 +15,50 @@ get_header();
     align-items: center;
     justify-content: center;
     padding: 4rem 2rem;
-    background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 100%);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.wc-404::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 80%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(227, 6, 19, 0.15) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .wc-404__container {
     max-width: 600px;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .wc-404__code {
     font-size: clamp(6rem, 20vw, 12rem);
     font-weight: 800;
-    color: #E30613;
+    background: linear-gradient(135deg, #E30613 0%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1;
     margin-bottom: 1rem;
-    text-shadow: 4px 4px 0 rgba(227, 6, 19, 0.1);
 }
 
 .wc-404__title {
     font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
-    color: #1a1a2e;
+    color: #fff;
     margin-bottom: 1rem;
 }
 
 .wc-404__text {
     font-size: 1.125rem;
-    color: #718096;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.7;
     margin-bottom: 2rem;
 }
@@ -98,13 +115,13 @@ get_header();
 .wc-404__links {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .wc-404__links-title {
     font-size: 1rem;
     font-weight: 600;
-    color: #1a1a2e;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 1rem;
 }
 
@@ -119,14 +136,14 @@ get_header();
 }
 
 .wc-404__links-list a {
-    color: #E30613;
+    color: #ff6b6b;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
 }
 
 .wc-404__links-list a:hover {
-    color: #c70511;
+    color: #E30613;
     text-decoration: underline;
 }
 </style>

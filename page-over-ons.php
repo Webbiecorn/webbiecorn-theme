@@ -9,11 +9,12 @@ get_header();
 
 // Hero via template part
 get_template_part('template-parts/hero', null, array(
-    'badge_text'   => 'Hey, welkom!',
+    'badge_text'   => 'Maak kennis',
     'badge_color'  => 'blue',
     'title'        => 'Wij zijn Webbiecorn',
     'title_accent' => 'Webbiecorn',
     'subtitle'     => 'Een kleine, wendbare studio die grote dingen bouwt. Van slimme webapps tot opvallende websites — altijd met passie en precisie.',
+    'cta'          => array('label' => 'Bekijk ons werk', 'url' => home_url('/portfolio'), 'variant' => 'outline'),
     'stats'        => array(
         array('icon' => '🚀', 'text' => 'Opgericht in 2024'),
         array('icon' => '💡', 'text' => '100% maatwerk'),
@@ -28,11 +29,11 @@ get_template_part('template-parts/hero', null, array(
         <div class="wc-team-intro">
             <span class="wc-section-badge">🚀 Ons verhaal</span>
             <h2 class="wc-team-intro__title">Een team met een missie</h2>
-            <p class="wc-team-intro__text">
+            <p class="wc-team-intro__text wc-text-narrow">
                 Webbiecorn ontstond uit een simpele overtuiging: <strong>goede websites hoeven niet duur of ingewikkeld te zijn</strong>. 
                 Na jaren ervaring bij agencies en als freelancers besloten we het anders te doen.
             </p>
-            <p class="wc-team-intro__text">
+            <p class="wc-team-intro__text wc-text-narrow">
                 Geen eindeloze vergaderingen, geen accountmanagers, geen verborgen kosten. 
                 Gewoon een <strong>klein team van specialisten</strong> dat direct met je samenwerkt aan oplossingen die werken.
             </p>
@@ -59,21 +60,21 @@ get_template_part('template-parts/hero', null, array(
         
         <!-- Expertise Areas -->
         <div class="wc-team-expertise">
-            <div class="wc-expertise-card">
+            <a href="<?php echo esc_url(home_url('/diensten/webdevelopment')); ?>" class="wc-expertise-card wc-expertise-card--clickable">
                 <span class="wc-expertise-card__icon">💻</span>
                 <h3 class="wc-expertise-card__title">Development</h3>
                 <p class="wc-expertise-card__desc">Full-stack ontwikkeling met moderne technologieën. Van WordPress tot React apps.</p>
-            </div>
-            <div class="wc-expertise-card">
+            </a>
+            <a href="<?php echo esc_url(home_url('/diensten/branding')); ?>" class="wc-expertise-card wc-expertise-card--clickable">
                 <span class="wc-expertise-card__icon">🎨</span>
                 <h3 class="wc-expertise-card__title">Design</h3>
                 <p class="wc-expertise-card__desc">UI/UX design en branding die opvalt. Functioneel én mooi.</p>
-            </div>
-            <div class="wc-expertise-card">
+            </a>
+            <a href="<?php echo esc_url(home_url('/diensten/seo-analyse')); ?>" class="wc-expertise-card wc-expertise-card--clickable">
                 <span class="wc-expertise-card__icon">📈</span>
                 <h3 class="wc-expertise-card__title">Strategie</h3>
                 <p class="wc-expertise-card__desc">SEO, conversie-optimalisatie en digitale groeistrategieën.</p>
-            </div>
+            </a>
         </div>
     </div>
 </section>
@@ -87,53 +88,22 @@ get_template_part('template-parts/hero', null, array(
             <p class="wc-different__subtitle">Dit is hoe wij anders werken dan de rest</p>
         </div>
         
-        <div class="wc-different-grid">
-            <!-- VS Card 1 -->
-            <div class="wc-vs-card">
-                <div class="wc-vs-card__header">
-                    <span class="wc-vs-card__icon wc-vs-card__icon--bad">❌</span>
-                    <span class="wc-vs-card__label wc-vs-card__label--bad">Anderen</span>
-                </div>
-                <p class="wc-vs-card__text">"We gebruiken bewezen templates voor snelle levering"</p>
+        <div class="wc-different-compare">
+            <div class="wc-different-col wc-different-col--left">
+                <h3>Anderen</h3>
+                <ul class="wc-different-list wc-different-list--bad">
+                    <li>"We gebruiken bewezen templates voor snelle levering"</li>
+                    <li>"Onze accountmanager neemt contact op voor de offerte"</li>
+                    <li>"Hosting kost €50/maand, wijzigingen €75 per uur extra"</li>
+                </ul>
             </div>
-            <div class="wc-vs-card wc-vs-card--good">
-                <div class="wc-vs-card__header">
-                    <span class="wc-vs-card__icon wc-vs-card__icon--good">✅</span>
-                    <span class="wc-vs-card__label wc-vs-card__label--good">Webbiecorn</span>
-                </div>
-                <p class="wc-vs-card__text">"Elke regel code schrijven we zelf. Geen templates, geen bloat."</p>
-            </div>
-            
-            <!-- VS Card 2 -->
-            <div class="wc-vs-card">
-                <div class="wc-vs-card__header">
-                    <span class="wc-vs-card__icon wc-vs-card__icon--bad">❌</span>
-                    <span class="wc-vs-card__label wc-vs-card__label--bad">Anderen</span>
-                </div>
-                <p class="wc-vs-card__text">"Onze accountmanager neemt contact op voor de offerte"</p>
-            </div>
-            <div class="wc-vs-card wc-vs-card--good">
-                <div class="wc-vs-card__header">
-                    <span class="wc-vs-card__icon wc-vs-card__icon--good">✅</span>
-                    <span class="wc-vs-card__label wc-vs-card__label--good">Webbiecorn</span>
-                </div>
-                <p class="wc-vs-card__text">"Je praat direct met het team dat jouw project bouwt."</p>
-            </div>
-            
-            <!-- VS Card 3 -->
-            <div class="wc-vs-card">
-                <div class="wc-vs-card__header">
-                    <span class="wc-vs-card__icon wc-vs-card__icon--bad">❌</span>
-                    <span class="wc-vs-card__label wc-vs-card__label--bad">Anderen</span>
-                </div>
-                <p class="wc-vs-card__text">"Hosting kost €50/maand, wijzigingen €75 per uur extra"</p>
-            </div>
-            <div class="wc-vs-card wc-vs-card--good">
-                <div class="wc-vs-card__header">
-                    <span class="wc-vs-card__icon wc-vs-card__icon--good">✅</span>
-                    <span class="wc-vs-card__label wc-vs-card__label--good">Webbiecorn</span>
-                </div>
-                <p class="wc-vs-card__text">"Vaste prijzen, alles inbegrepen. Geen verrassingen."</p>
+            <div class="wc-different-col wc-different-col--right">
+                <h3>Webbiecorn</h3>
+                <ul class="wc-different-list wc-different-list--good">
+                    <li>Elke regel code schrijven we zelf. Geen templates, geen bloat.</li>
+                    <li>Je praat direct met het team dat jouw project bouwt.</li>
+                    <li>Vaste prijzen, alles inbegrepen. Geen verrassingen.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -260,29 +230,13 @@ get_template_part('template-parts/hero', null, array(
     </div>
 </section>
 
-<!-- CTA -->
-<section class="wc-section wc-section--gradient wc-cta wc-about-cta">
-    <div class="wc-container">
-        <div class="wc-about-cta__content">
-            <span class="wc-about-cta__emoji">🚀</span>
-            <h2 class="wc-cta__title">Klaar om samen te bouwen?</h2>
-            <p class="wc-cta__text">
-                Geen salesgesprekken, gewoon een eerlijk gesprek over jouw project. 
-                Laten we kijken wat we voor elkaar kunnen betekenen.
-            </p>
-            <div class="wc-cta__buttons">
-                <a href="<?php echo esc_url(home_url('/contact')); ?>" class="wc-btn wc-btn--white wc-btn--large">
-                    Plan een gesprek
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="<?php echo esc_url(home_url('/portfolio')); ?>" class="wc-btn wc-btn--ghost wc-btn--large">
-                    Bekijk ons werk
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+get_template_part('template-parts/cta-footer', null, array(
+    'title' => 'Klaar om samen te bouwen?',
+    'text' => 'Geen salesgesprekken, gewoon een eerlijk gesprek over jouw project. Laten we kijken wat we voor elkaar kunnen betekenen.',
+    'primary' => array('label' => 'Plan een gesprek', 'url' => home_url('/contact/')),
+    'secondary' => array('label' => 'Bekijk ons werk', 'url' => home_url('/portfolio/')),
+));
+?>
 
 <?php get_footer(); ?>

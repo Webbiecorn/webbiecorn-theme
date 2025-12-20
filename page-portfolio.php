@@ -243,24 +243,14 @@ get_template_part('template-parts/hero', null, array(
         </div>
     </section>
     
-    <!-- ========================================
-         CTA
-         ======================================== -->
-    <section class="pf-cta">
-        <div class="wc-container">
-            <div class="pf-cta__content">
-                <h2 class="pf-cta__title">Klaar voor jouw project?</h2>
-                <p class="pf-cta__text">
-                    Laten we samen iets moois bouwen. Gratis adviesgesprek, 
-                    vrijblijvende offerte binnen 24 uur.
-                </p>
-                <a href="/contact/" class="pf-cta__button">
-                    Start jouw project
-                    <span>→</span>
-                </a>
-            </div>
-        </div>
-    </section>
+	<?php
+	get_template_part('template-parts/cta-footer', null, array(
+		'title' => 'Klaar voor jouw project?',
+		'text' => 'Laten we samen iets moois bouwen. Gratis adviesgesprek, vrijblijvende offerte binnen 24 uur.',
+		'primary' => array('label' => 'Start jouw project', 'url' => home_url('/contact/')),
+		'secondary' => array('label' => 'Bekijk diensten', 'url' => home_url('/diensten/')),
+	));
+	?>
 
 </main>
 

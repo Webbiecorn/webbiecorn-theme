@@ -6,46 +6,21 @@
  */
 
 get_header();
-?>
 
-<!-- Contact Hero - Split Design -->
-<section class="wc-contact-hero">
-    <div class="wc-contact-hero__bg">
-        <div class="wc-contact-hero__gradient"></div>
-        <div class="wc-contact-hero__pattern"></div>
-    </div>
-    
-    <div class="wc-container">
-        <div class="wc-contact-hero__content">
-            <span class="wc-contact-hero__badge">
-                <span class="wc-contact-hero__badge-dot"></span>
-                Beschikbaar voor nieuwe projecten
-            </span>
-            <h1 class="wc-contact-hero__title">
-                Laten we iets <span class="wc-text-gradient">moois</span> bouwen
-            </h1>
-            <p class="wc-contact-hero__subtitle">
-                Of je nu een vraag hebt, een idee wilt bespreken of direct wilt starten — ik hoor graag van je.
-            </p>
-            
-            <!-- Quick Stats -->
-            <div class="wc-contact-hero__stats">
-                <div class="wc-contact-stat">
-                    <span class="wc-contact-stat__icon">⚡</span>
-                    <span class="wc-contact-stat__text">Reactie binnen 24 uur</span>
-                </div>
-                <div class="wc-contact-stat">
-                    <span class="wc-contact-stat__icon">💬</span>
-                    <span class="wc-contact-stat__text">Gratis adviesgesprek</span>
-                </div>
-                <div class="wc-contact-stat">
-                    <span class="wc-contact-stat__icon">🎯</span>
-                    <span class="wc-contact-stat__text">Geen verplichtingen</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+// Hero via template part (green badge = default)
+get_template_part('template-parts/hero', null, array(
+    'badge_text'   => 'Beschikbaar voor nieuwe projecten',
+    'badge_color'  => 'green',
+    'title'        => 'Laten we iets moois bouwen',
+    'title_accent' => 'moois',
+    'subtitle'     => 'Of je nu een vraag hebt, een idee wilt bespreken of direct wilt starten — ik hoor graag van je.',
+    'stats'        => array(
+        array('icon' => '⚡', 'text' => 'Reactie binnen 24 uur'),
+        array('icon' => '💬', 'text' => 'Gratis adviesgesprek'),
+        array('icon' => '🎯', 'text' => 'Geen verplichtingen'),
+    )
+));
+?>
 
 <!-- Main Contact Section -->
 <section class="wc-section wc-contact-main">
@@ -60,7 +35,7 @@ get_header();
                 </div>
                 
                 <!-- Email Card - Primary -->
-                <a href="mailto:info@webbiecorn.nl" class="wc-contact-method wc-contact-method--primary">
+                <a href="mailto:info@webbiecorn.nl" class="wc-contact-method wc-contact-method--primary wc-card wc-card--hover">
                     <div class="wc-contact-method__icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -75,28 +50,25 @@ get_header();
                     <div class="wc-contact-method__arrow">→</div>
                 </a>
                 
-                <!-- Phone Card - Secondary option -->
-                <div class="wc-contact-method wc-contact-method--secondary">
+                <!-- Location Info - Enhanced -->
+                <div class="wc-contact-method wc-contact-method--location wc-card">
                     <div class="wc-contact-method__icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
                         </svg>
                     </div>
                     <div class="wc-contact-method__content">
-                        <span class="wc-contact-method__label">Liever bellen?</span>
-                        <span class="wc-contact-method__value">Op aanvraag</span>
-                        <span class="wc-contact-method__hint">Vraag via mail/chat om een belafspraak</span>
+                        <span class="wc-contact-method__label">Werkgebied</span>
+                        <span class="wc-contact-method__value">Heel Nederland</span>
+                        <span class="wc-contact-method__hint">Remote-first studio</span>
                     </div>
                 </div>
                 
-                <!-- Location Info -->
-                <div class="wc-contact-location">
-                    <div class="wc-contact-location__icon">📍</div>
-                    <div class="wc-contact-location__content">
-                        <span class="wc-contact-location__label">Locatie</span>
-                        <span class="wc-contact-location__value">Nederland</span>
-                        <span class="wc-contact-location__hint">Remote-first, heel Nederland</span>
-                    </div>
+                <!-- Response Time Badge -->
+                <div class="wc-contact-response-badge">
+                    <div class="wc-contact-response-badge__pulse"></div>
+                    <span class="wc-contact-response-badge__text">Gemiddelde reactietijd: <strong>&lt; 4 uur</strong></span>
                 </div>
                 
                 <!-- Social Links -->
@@ -123,7 +95,7 @@ get_header();
             </div>
             
             <!-- Right: Contact Form -->
-            <div class="wc-contact-form-wrapper">
+            <div class="wc-contact-form-wrapper" id="wc-contact-form">
                 <div class="wc-contact-form-card wc-contact-form-card--new">
                     <div class="wc-contact-form__header">
                         <span class="wc-contact-form__emoji">✉️</span>
@@ -152,13 +124,13 @@ get_header();
 <section class="wc-section wc-contact-process-simple">
     <div class="wc-container">
         <div class="wc-process-simple">
-            <div class="wc-process-simple__step">
+            <a href="#wc-contact-form" class="wc-process-simple__step wc-process-simple__step--clickable">
                 <div class="wc-process-simple__icon">💬</div>
                 <div class="wc-process-simple__content">
                     <h3>Stuur een bericht</h3>
-                    <p>Via formulier, mail of chat</p>
+                    <p>Via formulier of mail</p>
                 </div>
-            </div>
+            </a>
             <div class="wc-process-simple__arrow">→</div>
             <div class="wc-process-simple__step">
                 <div class="wc-process-simple__icon">⚡</div>
@@ -168,13 +140,13 @@ get_header();
                 </div>
             </div>
             <div class="wc-process-simple__arrow">→</div>
-            <div class="wc-process-simple__step">
+            <a href="<?php echo esc_url(home_url('/diensten/')); ?>" class="wc-process-simple__step wc-process-simple__step--clickable">
                 <div class="wc-process-simple__icon">📋</div>
                 <div class="wc-process-simple__content">
                     <h3>Offerte op maat</h3>
                     <p>Duidelijk en vrijblijvend</p>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </section>
@@ -206,5 +178,14 @@ get_header();
         </div>
     </div>
 </section>
+
+<?php
+get_template_part('template-parts/cta-footer', null, array(
+    'title' => 'Wil je eerst even rondkijken?',
+    'text' => 'Bekijk onze diensten of het recente werk. Liever direct schakelen? Stuur een bericht en we reageren snel.',
+    'primary' => array('label' => 'Bekijk diensten', 'url' => home_url('/diensten/')),
+    'secondary' => array('label' => 'Bekijk portfolio', 'url' => home_url('/portfolio/')),
+));
+?>
 
 <?php get_footer(); ?>
