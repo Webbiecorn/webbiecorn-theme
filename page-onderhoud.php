@@ -14,6 +14,7 @@ get_template_part('template-parts/hero', null, array(
     'title'        => 'Jouw website in topvorm',
     'title_accent' => 'topvorm',
     'subtitle'     => 'Een website is nooit "af". Updates, backups, beveiliging en snelle support — we regelen het zodat jij je kunt focussen op je business.',
+    'cta'          => array('label' => 'Onderhoud starten', 'url' => home_url('/contact/#wc-contact-form'), 'variant' => 'primary'),
     'stats'        => array(
         array('icon' => '🔒', 'text' => 'Beveiliging'),
         array('icon' => '💾', 'text' => 'Dagelijkse backups'),
@@ -26,12 +27,12 @@ get_template_part('template-parts/hero', null, array(
 <section class="wc-section wc-section--white">
     <div class="wc-container">
         <h2 class="wc-section__title">Waarom onderhoud belangrijk is</h2>
-        <p class="wc-section__subtitle">
+        <p class="wc-section__subtitle wc-text-narrow">
             90% van gehackte websites had verouderde software.
         </p>
         
         <div class="wc-why__grid">
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -41,7 +42,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Regelmatige updates dichten beveiligingslekken voordat hackers ze misbruiken.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
@@ -52,7 +53,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Monitoring zorgt dat problemen direct worden opgemerkt en opgelost.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
@@ -62,7 +63,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Optimalisaties houden je website snel — cruciaal voor SEO en conversie.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -345,26 +346,13 @@ get_template_part('template-parts/hero', null, array(
     </div>
 </section>
 
-<!-- CTA -->
-<section class="wc-section wc-section--dark wc-cta">
-    <div class="wc-container">
-        <h2 class="wc-cta__title">Website zorgeloos online?</h2>
-        <p class="wc-cta__text">
-            Laat het onderhoud aan ons over en focus op waar je goed in bent.
-        </p>
-        <div class="wc-cta__buttons">
-            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="wc-btn wc-btn--primary">
-                Start met Onderhoud
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
-            <a href="<?php echo esc_url(home_url('/webdesign')); ?>" class="wc-btn wc-btn--outline">
-                Nieuwe Website Nodig?
-            </a>
-        </div>
-    </div>
-</section>
+<?php
+get_template_part('template-parts/cta-footer', null, array(
+    'title' => 'Website zorgeloos online?',
+    'text' => 'Laat het onderhoud aan ons over en focus op waar je goed in bent.',
+    'primary' => array('label' => 'Start met onderhoud', 'url' => home_url('/contact/#wc-contact-form')),
+    'secondary' => array('label' => 'Nieuwe website nodig?', 'url' => home_url('/webdesign/')),
+));
+?>
 
 <?php get_footer(); ?>

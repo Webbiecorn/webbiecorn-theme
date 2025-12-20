@@ -65,7 +65,7 @@ if ($title_accent) {
             </h1>
             
             <?php if ($subtitle) : ?>
-            <p class="wc-contact-hero__subtitle">
+            <p class="wc-contact-hero__subtitle wc-text-narrow">
                 <?php echo esc_html($subtitle); ?>
             </p>
             <?php endif; ?>

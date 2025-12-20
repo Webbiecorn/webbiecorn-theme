@@ -14,6 +14,7 @@ get_template_part('template-parts/hero', null, array(
     'title'        => 'Word gevonden door je ideale klanten',
     'title_accent' => 'gevonden',
     'subtitle'     => 'Geen bezoekers = geen omzet. We helpen je website hoger ranken in Google met technische SEO, content optimalisatie en heldere rapportages.',
+    'cta'          => array('label' => 'SEO audit aanvragen', 'url' => home_url('/contact/#wc-contact-form'), 'variant' => 'primary'),
     'stats'        => array(
         array('icon' => '📈', 'text' => 'Hogere ranking'),
         array('icon' => '🔍', 'text' => 'Technische SEO'),
@@ -26,12 +27,12 @@ get_template_part('template-parts/hero', null, array(
 <section class="wc-section wc-section--white">
     <div class="wc-container">
         <h2 class="wc-section__title">Waarom SEO belangrijk is</h2>
-        <p class="wc-section__subtitle">
+        <p class="wc-section__subtitle wc-text-narrow">
             93% van online ervaringen begint bij een zoekmachine.
         </p>
         
         <div class="wc-why__grid">
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <circle cx="11" cy="11" r="8"/>
@@ -42,7 +43,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Gratis bezoekers die actief naar jouw diensten zoeken — 24/7, zonder advertentiekosten.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M12 20V10M18 20V4M6 20v-4"/>
@@ -52,7 +53,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Met Google Analytics en Search Console zie je precies wat werkt en waar kansen liggen.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
@@ -63,7 +64,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Eenmalig geoptimaliseerd = jarenlang voordeel. SEO is een investering, geen kostenpost.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -313,26 +314,13 @@ get_template_part('template-parts/hero', null, array(
     </div>
 </section>
 
-<!-- CTA -->
-<section class="wc-section wc-section--dark wc-cta">
-    <div class="wc-container">
-        <h2 class="wc-cta__title">Wil je weten hoe je website scoort?</h2>
-        <p class="wc-cta__text">
-            Vraag een gratis quickscan aan of boek direct een volledige SEO audit.
-        </p>
-        <div class="wc-cta__buttons">
-            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="wc-btn wc-btn--primary">
-                SEO Audit Aanvragen
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
-            <a href="<?php echo esc_url(home_url('/webdesign')); ?>" class="wc-btn wc-btn--outline">
-                Bekijk Webdesign Pakketten
-            </a>
-        </div>
-    </div>
-</section>
+<?php
+get_template_part('template-parts/cta-footer', null, array(
+    'title' => 'Wil je weten hoe je website scoort?',
+    'text' => 'Vraag een gratis quickscan aan of boek direct een volledige SEO audit.',
+    'primary' => array('label' => 'SEO audit aanvragen', 'url' => home_url('/contact/#wc-contact-form')),
+    'secondary' => array('label' => 'Bekijk webdesign pakketten', 'url' => home_url('/webdesign/')),
+));
+?>
 
 <?php get_footer(); ?>

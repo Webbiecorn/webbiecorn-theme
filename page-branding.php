@@ -14,6 +14,7 @@ get_template_part('template-parts/hero', null, array(
     'title'        => 'Een merk dat blijft hangen',
     'title_accent' => 'blijft hangen',
     'subtitle'     => 'Van logo tot complete huisstijl. We ontwerpen visuele identiteiten die jouw bedrijf professioneel en herkenbaar maken — op elk touchpoint.',
+    'cta'          => array('label' => 'Branding aanvragen', 'url' => home_url('/contact/#wc-contact-form'), 'variant' => 'primary'),
     'stats'        => array(
         array('icon' => '🎨', 'text' => 'Logo ontwerp'),
         array('icon' => '📋', 'text' => 'Huisstijl'),
@@ -26,12 +27,12 @@ get_template_part('template-parts/hero', null, array(
 <section class="wc-section wc-section--white">
     <div class="wc-container">
         <h2 class="wc-section__title">Waarom investeren in branding?</h2>
-        <p class="wc-section__subtitle">
+        <p class="wc-section__subtitle wc-text-narrow">
             Een sterke visuele identiteit is de basis voor vertrouwen en herkenbaarheid.
         </p>
         
         <div class="wc-why__grid">
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
@@ -42,7 +43,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Je hebt 7 seconden om een eerste indruk te maken. Een professioneel logo doet het werk voor je.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -54,7 +55,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Consistente branding zorgt dat klanten je herkennen — online, offline, overal.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5z"/>
@@ -65,7 +66,7 @@ get_template_part('template-parts/hero', null, array(
                 <p class="wc-why__desc">Een samenhangende huisstijl straalt kwaliteit en betrouwbaarheid uit naar potentiële klanten.</p>
             </div>
             
-            <div class="wc-why__item">
+            <div class="wc-why__item wc-card wc-card--hover">
                 <div class="wc-why__icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E30613" stroke-width="2">
                         <line x1="12" y1="1" x2="12" y2="23"/>
@@ -277,26 +278,13 @@ get_template_part('template-parts/hero', null, array(
     </div>
 </section>
 
-<!-- CTA -->
-<section class="wc-section wc-section--dark wc-cta">
-    <div class="wc-container">
-        <h2 class="wc-cta__title">Klaar voor een sterk merk?</h2>
-        <p class="wc-cta__text">
-            Laten we bespreken hoe we jouw visuele identiteit kunnen vormgeven.
-        </p>
-        <div class="wc-cta__buttons">
-            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="wc-btn wc-btn--primary">
-                Branding Aanvragen
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
-            <a href="<?php echo esc_url(home_url('/webdesign')); ?>" class="wc-btn wc-btn--outline">
-                Bekijk Webdesign Pakketten
-            </a>
-        </div>
-    </div>
-</section>
+<?php
+get_template_part('template-parts/cta-footer', null, array(
+    'title' => 'Klaar voor een sterk merk?',
+    'text' => 'Laten we bespreken hoe we jouw visuele identiteit kunnen vormgeven.',
+    'primary' => array('label' => 'Branding aanvragen', 'url' => home_url('/contact/#wc-contact-form')),
+    'secondary' => array('label' => 'Bekijk webdesign pakketten', 'url' => home_url('/webdesign/')),
+));
+?>
 
 <?php get_footer(); ?>

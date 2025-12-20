@@ -17,6 +17,7 @@ get_template_part('template-parts/hero', null, array(
     'title'        => 'Websites die werken — op maat gebouwd',
     'title_accent' => 'op maat gebouwd',
     'subtitle'     => 'Geen templates, geen pagebuilders. Alleen schone code, snelle laadtijden en een design dat past bij jouw merk. Kies het pakket dat bij je past.',
+    'cta'          => array('label' => 'Offerte aanvragen', 'url' => home_url('/contact/#wc-contact-form'), 'variant' => 'primary'),
     'stats'        => array(
         array('icon' => '⚡', 'text' => '<1s laadtijd'),
         array('icon' => '🎨', 'text' => '100% maatwerk'),
