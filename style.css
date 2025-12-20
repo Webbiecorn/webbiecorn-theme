@@ -4,12 +4,38 @@ Theme URI: https://webbiecorn.nl
 Author: Webbiecorn
 Author URI: https://webbiecorn.nl
 Description: Modern, snel en professioneel agency theme voor Webbiecorn. Volledig nieuw gebouwd om cache problemen te voorkomen.
-Version: 1.0
+Version: 2.3.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: webbiecorn-starter
 Tags: agency, portfolio, modern, fast, responsive
 */
+
+/* ==========================================================================
+   ARCHITECTURE NOTE (v2.3.0)
+   
+   Dit bestand bevat de legacy/fallback CSS. 
+   De primaire CSS wordt nu conditioneel geladen via modulaire bestanden:
+   
+   /assets/css/
+   ├── base.css           - Reset, typography, variables
+   ├── header.css         - Navigation, mobile menu
+   ├── buttons.css        - Button components
+   ├── footer.css         - Footer styles
+   ├── animations.css     - Keyframes, GSAP fallbacks
+   ├── responsive.css     - Breakpoints
+   ├── cookie-consent.css - Cookie banner
+   ├── hero.css           - Homepage hero (conditional)
+   ├── services.css       - Service cards (conditional)
+   ├── homepage-sections.css - Homepage specific (conditional)
+   ├── portfolio.css      - Portfolio page (conditional)
+   ├── portfolio-v2.css   - Portfolio V2 (conditional)
+   ├── pricing.css        - Pricing tables (conditional)
+   └── pages.css          - Generic page styles (conditional)
+   
+   CSS wordt geladen via functions.php met conditionele logica per pagina.
+   Dit bestand blijft als fallback voor edge cases en admin styling.
+   ========================================================================== */
 
 /* ==========================================================================
    CSS Custom Properties (Design Tokens)
@@ -8116,6 +8142,27 @@ body.menu-open .wc-menu-toggle span:last-child {
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 25px;
+}
+
+/* Badge color variants */
+.wc-contact-hero__badge--blue {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #3b82f6;
+}
+
+.wc-contact-hero__badge--blue .wc-contact-hero__badge-dot {
+  background: #3b82f6;
+}
+
+.wc-contact-hero__badge--purple {
+  background: rgba(147, 51, 234, 0.1);
+  border-color: rgba(147, 51, 234, 0.3);
+  color: #a855f7;
+}
+
+.wc-contact-hero__badge--purple .wc-contact-hero__badge-dot {
+  background: #a855f7;
 }
 
 .wc-contact-hero__badge-dot {

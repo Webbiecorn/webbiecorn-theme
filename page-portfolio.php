@@ -4,7 +4,7 @@
  * 
  * Clean, modern portfolio with subtle animations
  * @package Webbiecorn_Starter
- * @version 2.2.0
+ * @version 2.3.0
  */
 
 get_header();
@@ -12,48 +12,21 @@ get_header();
 
 <main class="wc-portfolio-v2">
 
-    <!-- ========================================
-         HERO - Same style as Contact/Over Ons
-         ======================================== -->
-    <section class="wc-contact-hero">
-        <div class="wc-contact-hero__bg">
-            <div class="wc-contact-hero__gradient"></div>
-            <div class="wc-contact-hero__pattern"></div>
-        </div>
-        
-        <div class="wc-container">
-            <div class="wc-contact-hero__content">
-                <span class="wc-contact-hero__badge" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); color: #3b82f6;">
-                    <span class="wc-contact-hero__badge-dot" style="background: #3b82f6;"></span>
-                    Portfolio
-                </span>
-                
-                <h1 class="wc-contact-hero__title">
-                    Projecten die <span class="wc-text-gradient">resultaat</span> leveren
-                </h1>
-                
-                <p class="wc-contact-hero__subtitle">
-                    Van concept tot launch — maatwerk websites en webapps 
-                    die converteren, presteren en groeien.
-                </p>
-                
-                <div class="wc-contact-hero__stats">
-                    <span class="wc-contact-stat">
-                        <span class="wc-contact-stat__icon">🚀</span>
-                        <span class="wc-contact-stat__text">17+ Projecten</span>
-                    </span>
-                    <span class="wc-contact-stat">
-                        <span class="wc-contact-stat__icon">💯</span>
-                        <span class="wc-contact-stat__text">100% Maatwerk</span>
-                    </span>
-                    <span class="wc-contact-stat">
-                        <span class="wc-contact-stat__icon">⚡</span>
-                        <span class="wc-contact-stat__text">&lt;1s Laadtijd</span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
+<?php
+// Hero via template part
+get_template_part('template-parts/hero', null, array(
+    'badge_text'   => 'Portfolio',
+    'badge_color'  => 'blue',
+    'title'        => 'Projecten die resultaat leveren',
+    'title_accent' => 'resultaat',
+    'subtitle'     => 'Van concept tot launch — maatwerk websites en webapps die converteren, presteren en groeien.',
+    'stats'        => array(
+        array('icon' => '🚀', 'text' => '17+ Projecten'),
+        array('icon' => '💯', 'text' => '100% Maatwerk'),
+        array('icon' => '⚡', 'text' => '<1s Laadtijd'),
+    )
+));
+?>
 
     <!-- ========================================
          FEATURED PROJECTS

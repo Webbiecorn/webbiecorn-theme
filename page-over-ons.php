@@ -6,48 +6,21 @@
  */
 
 get_header();
-?>
 
-<!-- Hero - Same style as Contact page -->
-<section class="wc-contact-hero wc-about-hero">
-    <div class="wc-contact-hero__bg">
-        <div class="wc-contact-hero__gradient"></div>
-        <div class="wc-contact-hero__pattern"></div>
-    </div>
-    
-    <div class="wc-container">
-        <div class="wc-contact-hero__content">
-            <span class="wc-contact-hero__badge" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3); color: #3b82f6;">
-                <span class="wc-contact-hero__badge-dot" style="background: #3b82f6;"></span>
-                Hey, welkom!
-            </span>
-            
-            <h1 class="wc-contact-hero__title">
-                Wij zijn <span class="wc-text-gradient">Webbiecorn</span>
-            </h1>
-            
-            <p class="wc-contact-hero__subtitle">
-                Een kleine, wendbare studio die grote dingen bouwt. 
-                Van slimme webapps tot opvallende websites — altijd met passie en precisie.
-            </p>
-            
-            <div class="wc-contact-hero__stats">
-                <span class="wc-contact-stat">
-                    <span class="wc-contact-stat__icon">🚀</span>
-                    <span class="wc-contact-stat__text">Opgericht in 2024</span>
-                </span>
-                <span class="wc-contact-stat">
-                    <span class="wc-contact-stat__icon">💡</span>
-                    <span class="wc-contact-stat__text">100% maatwerk</span>
-                </span>
-                <span class="wc-contact-stat">
-                    <span class="wc-contact-stat__icon">🎯</span>
-                    <span class="wc-contact-stat__text">Resultaatgericht</span>
-                </span>
-            </div>
-        </div>
-    </div>
-</section>
+// Hero via template part
+get_template_part('template-parts/hero', null, array(
+    'badge_text'   => 'Hey, welkom!',
+    'badge_color'  => 'blue',
+    'title'        => 'Wij zijn Webbiecorn',
+    'title_accent' => 'Webbiecorn',
+    'subtitle'     => 'Een kleine, wendbare studio die grote dingen bouwt. Van slimme webapps tot opvallende websites — altijd met passie en precisie.',
+    'stats'        => array(
+        array('icon' => '🚀', 'text' => 'Opgericht in 2024'),
+        array('icon' => '💡', 'text' => '100% maatwerk'),
+        array('icon' => '🎯', 'text' => 'Resultaatgericht'),
+    )
+));
+?>
 
 <!-- Meet The Founder Section -->
 <section class="wc-section wc-section--dark wc-about-team">
