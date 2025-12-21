@@ -22,7 +22,7 @@ php -l page-*.php
 ```
 
 ## Deploy
-See `DEPLOY.md`.
+See `DEPLOY.md` (centrale deploy-handleiding, incl. SSH key-based deploy en `Host webbiecorn`).
 
 ## Security
 - Never commit passwords/API keys/private keys.
