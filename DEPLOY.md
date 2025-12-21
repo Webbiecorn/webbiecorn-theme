@@ -52,6 +52,7 @@ Aanrader: exclude dev/docs bestanden.
 ```bash
 rsync -avz --delete \
   --exclude ".git/" \
+  --exclude ".gitignore" \
   --exclude ".vscode/" \
   --exclude "node_modules/" \
   --exclude "DEPLOY.md" \
