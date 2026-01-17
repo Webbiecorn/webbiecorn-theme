@@ -40,7 +40,7 @@ $secondary_url = is_array($secondary) ? ($secondary['url'] ?? '') : '';
                 <?php if ($primary_label && $primary_url) : ?>
                     <a href="<?php echo esc_url($primary_url); ?>" class="wc-btn wc-btn--primary wc-btn--lg">
                         <?php echo esc_html($primary_label); ?>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <line x1="5" y1="12" x2="19" y2="12"/>
                             <polyline points="12 5 19 12 12 19"/>
                         </svg>
