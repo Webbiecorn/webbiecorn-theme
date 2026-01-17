@@ -111,8 +111,7 @@ if (!defined('ABSPATH')) {
     </div>
 </footer>
 
-<!-- GSAP for animations -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<!-- GSAP is loaded locally via functions.php -->
 
 <!-- Cookie Consent Banner -->
 <div id="wc-cookie-banner" class="wc-cookie-banner" style="display: none;">
