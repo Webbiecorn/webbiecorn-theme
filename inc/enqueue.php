@@ -79,89 +79,33 @@ function webbiecorn_starter_scripts() {
     // =========================================================================
     
     // GSAP Core
-    wp_enqueue_script(
-        'gsap',
-        $theme_uri . '/assets/js/vendor/gsap.min.js',
-        array(),
-        '3.12.5',
-        true
-    );
+    wp_enqueue_script('gsap', $theme_uri . '/assets/js/vendor/gsap.min.js', array(), '3.12.5', array('strategy' => 'defer', 'in_footer' => true));
     
     // ScrollTrigger - scroll-based animations
-    wp_enqueue_script(
-        'gsap-scrolltrigger',
-        $theme_uri . '/assets/js/vendor/ScrollTrigger.min.js',
-        array('gsap'),
-        '3.12.5',
-        true
-    );
+    wp_enqueue_script('gsap-scrolltrigger', $theme_uri . '/assets/js/vendor/ScrollTrigger.min.js', array('gsap'), '3.12.5', array('strategy' => 'defer', 'in_footer' => true));
     
     // Observer - touch/scroll/pointer detection (only on pages that need it)
     if (is_front_page() || is_page('portfolio')) {
-        wp_enqueue_script(
-            'gsap-observer',
-            $theme_uri . '/assets/js/vendor/Observer.min.js',
-            array('gsap'),
-            '3.12.5',
-            true
-        );
+        wp_enqueue_script('gsap-observer', $theme_uri . '/assets/js/vendor/Observer.min.js', array('gsap'), '3.12.5', array('strategy' => 'defer', 'in_footer' => true));
     }
     
     // TextPlugin - text animation effects (only on homepage)
     if (is_front_page()) {
-        wp_enqueue_script(
-            'gsap-textplugin',
-            $theme_uri . '/assets/js/vendor/TextPlugin.min.js',
-            array('gsap'),
-            '3.12.5',
-            true
-        );
+        wp_enqueue_script('gsap-textplugin', $theme_uri . '/assets/js/vendor/TextPlugin.min.js', array('gsap'), '3.12.5', array('strategy' => 'defer', 'in_footer' => true));
     }
     
     // Main JavaScript (depends on GSAP)
-    wp_enqueue_script(
-        'webbiecorn-starter-script',
-        $theme_uri . '/assets/js/main.js',
-        array('gsap', 'gsap-scrolltrigger'),
-        $version,
-        true
-    );
+    wp_enqueue_script('webbiecorn-starter-script', $theme_uri . '/assets/js/main.js', array('gsap', 'gsap-scrolltrigger'), $version, array('strategy' => 'defer', 'in_footer' => true));
     
     // GSAP Animations - global site animations
-    wp_enqueue_script(
-        'webbiecorn-animations',
-        $theme_uri . '/assets/js/animations.js',
-        array('gsap', 'gsap-scrolltrigger'),
-        $version,
-        true
-    );
+    wp_enqueue_script('webbiecorn-animations', $theme_uri . '/assets/js/animations.js', array('gsap', 'gsap-scrolltrigger'), $version, array('strategy' => 'defer', 'in_footer' => true));
     
     // Portfolio V2 - scroll animations (only on portfolio page)
     if (is_page('portfolio') || is_page('projecten')) {
-        wp_enqueue_script(
-            'webbiecorn-portfolio-v2',
-            $theme_uri . '/assets/js/portfolio-v2.js',
-            array('gsap', 'gsap-scrolltrigger'),
-            $version,
-            true
-        );
+        wp_enqueue_script('webbiecorn-portfolio-v2', $theme_uri . '/assets/js/portfolio-v2.js', array('gsap', 'gsap-scrolltrigger'), $version, array('strategy' => 'defer', 'in_footer' => true));
     }
 }
 add_action('wp_enqueue_scripts', 'webbiecorn_starter_scripts');
-
-/**
- * Add defer attribute to GSAP scripts for better performance
- */
-function webbiecorn_defer_scripts($tag, $handle, $src) {
-    $defer_scripts = array('gsap', 'gsap-scrolltrigger', 'gsap-observer', 'gsap-textplugin', 'webbiecorn-animations', 'webbiecorn-portfolio-v2');
-    
-    if (in_array($handle, $defer_scripts)) {
-        return str_replace(' src', ' defer src', $tag);
-    }
-    
-    return $tag;
-}
-add_filter('script_loader_tag', 'webbiecorn_defer_scripts', 10, 3);
 
 /**
  * Add preconnect for Google Fonts
