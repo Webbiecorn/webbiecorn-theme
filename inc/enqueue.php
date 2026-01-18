@@ -104,6 +104,10 @@ function webbiecorn_starter_scripts() {
     if (is_page('portfolio') || is_page('projecten')) {
         wp_enqueue_script('webbiecorn-portfolio-v2', $theme_uri . '/assets/js/portfolio-v2.js', array('gsap', 'gsap-scrolltrigger'), $version, array('strategy' => 'defer', 'in_footer' => true));
     }
+
+    // Bolt ⚡ Optimization: Moved inline cookie consent JS to its own file.
+    // This allows the browser to cache the script, improving performance on subsequent page loads.
+    wp_enqueue_script('webbiecorn-cookie-consent', $theme_uri . '/assets/js/cookie-consent.js', array(), $version, array('strategy' => 'defer', 'in_footer' => true));
 }
 add_action('wp_enqueue_scripts', 'webbiecorn_starter_scripts');
 
