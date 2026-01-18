@@ -127,29 +127,7 @@ if (!defined('ABSPATH')) {
     </div>
 </div>
 
-<script>
-(function() {
-    var consent = localStorage.getItem('wc_cookie_consent');
-    var banner = document.getElementById('wc-cookie-banner');
-    
-    if (!consent && banner) {
-        banner.style.display = 'block';
-    }
-    
-    document.getElementById('wc-cookie-accept')?.addEventListener('click', function() {
-        localStorage.setItem('wc_cookie_consent', 'accepted');
-        banner.style.display = 'none';
-        // Reload to activate GA
-        location.reload();
-    });
-    
-    document.getElementById('wc-cookie-decline')?.addEventListener('click', function() {
-        localStorage.setItem('wc_cookie_consent', 'declined');
-        banner.style.display = 'none';
-    });
-})();
-</script>
-
+<!-- Cookie consent logic is now enqueued and deferred from functions.php for better performance -->
 <?php wp_footer(); ?>
 </body>
 </html>
