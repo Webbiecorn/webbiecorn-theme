@@ -51,8 +51,18 @@
         
         if (!menuToggle) return;
 
+        // Set initial state for screen readers
+        const initialAriaLabel = 'Menu openen';
+        menuToggle.setAttribute('aria-label', initialAriaLabel);
+        menuToggle.setAttribute('aria-expanded', 'false');
+
         menuToggle.addEventListener('click', function() {
             const isOpen = menuToggle.classList.toggle('active');
+
+            // Update ARIA attributes for accessibility
+            this.setAttribute('aria-expanded', isOpen);
+            this.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
+
             if (mobileMenu) {
                 if (isOpen) {
                     mobileMenu.style.display = 'flex';
@@ -63,7 +73,6 @@
                 }
             }
             document.body.classList.toggle('menu-open');
-            this.setAttribute('aria-expanded', isOpen);
         });
 
         // Mobile submenu toggle
