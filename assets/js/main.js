@@ -64,6 +64,7 @@
             }
             document.body.classList.toggle('menu-open');
             this.setAttribute('aria-expanded', isOpen);
+            this.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
         });
 
         // Mobile submenu toggle
@@ -90,6 +91,7 @@
                     setTimeout(() => mobileMenu.style.display = 'none', 400);
                     document.body.classList.remove('menu-open');
                     menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-label', 'Menu openen');
                 });
             });
         }
@@ -103,6 +105,7 @@
                 }
                 document.body.classList.remove('menu-open');
                 menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Menu openen');
             }
         });
     }
