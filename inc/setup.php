@@ -83,3 +83,15 @@ function webbiecorn_body_classes($classes) {
     return $classes;
 }
 add_filter('body_class', 'webbiecorn_body_classes');
+
+/**
+ * Add security headers
+ *
+ * @since 2.3.0
+ */
+function webbiecorn_add_security_headers() {
+    header('X-Frame-Options: SAMEORIGIN');
+    header('X-Content-Type-Options: nosniff');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+}
+add_action('send_headers', 'webbiecorn_add_security_headers');
