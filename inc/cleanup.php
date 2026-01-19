@@ -47,3 +47,12 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Remove X-Pingback-To HTTP header
+ * Mitigates XML-RPC DDoS reflection attacks.
+ */
+add_filter('wp_headers', function($headers) {
+    unset($headers['X-Pingback-To']);
+    return $headers;
+});
