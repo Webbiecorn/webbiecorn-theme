@@ -389,81 +389,76 @@
     }
     
     /**
-     * Matrix Rain Effect
+     * Matrix Rain Effect - Lazily Initialized for Performance
+     * ⚡ Performance Optimization: The expensive setup for the matrix rain (canvas context,
+     * character arrays, resizing) is deferred until the very first time the user hovers
+     * over the container. This improves initial page load time and reduces memory usage
+     * for users who never interact with this specific animation.
      */
     function initMatrixRain(canvas, container) {
-        const ctx = canvas.getContext('2d');
-        
-        // Set canvas size
-        function resizeCanvas() {
-            canvas.width = container.offsetWidth;
-            canvas.height = container.offsetHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        
-        // Matrix characters
-        const chars = '01<>/{}[]();:="\'HTML CSS JS PHP WP CODE DIV CLASS FUNCTION VAR CONST LET IMPORT EXPORT';
-        const charArray = chars.split('');
-        
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        
-        // Array to track y position of each column
-        const drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.random() * -100;
-        }
-        
-        let isHovering = false;
-        let animationId = null;
-        
-        function draw() {
-            // Semi-transparent black to create fade effect
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        container.addEventListener('mouseenter', function() {
+            const ctx = canvas.getContext('2d');
             
-            // Red text
-            ctx.fillStyle = '#E30613';
-            ctx.font = fontSize + 'px monospace';
+            function resizeCanvas() {
+                canvas.width = container.offsetWidth;
+                canvas.height = container.offsetHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
             
-            for (let i = 0; i < drops.length; i++) {
-                // Random character
-                const char = charArray[Math.floor(Math.random() * charArray.length)];
-                
-                // Draw character
-                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-                
-                // Reset drop to top with random delay
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                
-                drops[i]++;
+            const chars = '01<>/{}[]();:="\'HTML CSS JS PHP WP CODE DIV CLASS FUNCTION VAR CONST LET IMPORT EXPORT';
+            const charArray = chars.split('');
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+
+            const drops = [];
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -100;
             }
             
-            if (isHovering) {
+            let animationId = null;
+
+            function draw() {
+                ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#E30613';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const char = charArray[Math.floor(Math.random() * charArray.length)];
+                    ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
                 animationId = requestAnimationFrame(draw);
             }
-        }
-        
-        // Start/stop on hover
-        container.addEventListener('mouseenter', function() {
-            isHovering = true;
-            // Clear canvas first
+
+            // Start drawing immediately on first hover
             ctx.fillStyle = 'rgba(10, 10, 10, 1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             draw();
-        });
-        
-        container.addEventListener('mouseleave', function() {
-            isHovering = false;
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        });
+
+            container.addEventListener('mouseleave', function() {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+                // Clear canvas on mouse leave
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+
+            // Re-start animation on subsequent hovers without re-initializing
+            container.addEventListener('mouseenter', function() {
+                if (!animationId) {
+                    ctx.fillStyle = 'rgba(10, 10, 10, 1)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    draw();
+                }
+            });
+
+        }, { once: true }); // Crucial for lazy initialization: runs only once.
     }
 
     /**
