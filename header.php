@@ -194,6 +194,8 @@ if (is_front_page()) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<a class="skip-to-content-link" href="#main"><?php esc_html_e( 'Skip to main content', 'webbiecorn-starter' ); ?></a>
+
 <header class="wc-header" id="header">
     <div class="wc-header__container">
         <div class="wc-header__inner">
