@@ -124,3 +124,23 @@ function webbiecorn_resource_hints($urls, $relation_type) {
     return $urls;
 }
 add_filter('wp_resource_hints', 'webbiecorn_resource_hints', 10, 2);
+
+/**
+ * ⚡ Performance: Asynchronously load Google Fonts
+ *
+ * This function intercepts the <link> tag for the 'webbiecorn-fonts' stylesheet
+ * and modifies it to load asynchronously, preventing it from blocking page render.
+ * It uses rel="preload" and an onload event to apply the styles once fetched.
+ *
+ * @param string $tag The <link> tag for the enqueued style.
+ * @param string $handle The style's handle.
+ * @return string Modified <link> tag.
+ */
+function webbiecorn_async_google_fonts($tag, $handle) {
+    if ('webbiecorn-fonts' === $handle) {
+        // Change the rel attribute to 'preload' and add an onload event
+        return str_replace("rel='stylesheet'", "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"", $tag);
+    }
+    return $tag;
+}
+add_filter('style_loader_tag', 'webbiecorn_async_google_fonts', 10, 2);
