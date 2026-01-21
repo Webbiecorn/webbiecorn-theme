@@ -64,3 +64,6 @@ require_once WEBBIECORN_INC . '/cleanup.php';
 
 // Schema.org structured data
 require_once WEBBIECORN_INC . '/schema.php';
+
+// Security enhancements (headers, etc.)
+require_once WEBBIECORN_INC . '/security.php';
