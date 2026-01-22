@@ -20,7 +20,8 @@
  * ├── cpt.php         - Custom Post Types (Portfolio)
  * ├── helpers.php     - Helper functions, lazy loading
  * ├── cleanup.php     - WP head cleanup, disable emojis
- * └── schema.php      - Schema.org structured data (JSON-LD)
+ * ├── schema.php      - Schema.org structured data (JSON-LD)
+ * └── security.php    - Security enhancements (headers, etc.)
  * 
  * ==========================================================================
  */
@@ -64,3 +65,6 @@ require_once WEBBIECORN_INC . '/cleanup.php';
 
 // Schema.org structured data
 require_once WEBBIECORN_INC . '/schema.php';
+
+// Security enhancements
+require_once WEBBIECORN_INC . '/security.php';
