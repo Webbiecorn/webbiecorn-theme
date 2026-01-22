@@ -124,3 +124,40 @@ function webbiecorn_resource_hints($urls, $relation_type) {
     return $urls;
 }
 add_filter('wp_resource_hints', 'webbiecorn_resource_hints', 10, 2);
+
+/**
+ * ⚡ Performance Optimization: Asynchronous Google Fonts
+ * -----------------------------------------------------------------------------
+ * PROBLEM: By default, Google Fonts are loaded via a render-blocking <link> tag,
+ * which delays First Contentful Paint (FCP) and Largest Contentful Paint (LCP).
+ *
+ * SOLUTION: This function hooks into the 'style_loader_tag' filter to modify
+ * the Google Fonts <link> tag. It uses `rel="preload"` to fetch the stylesheet
+ * asynchronously without blocking the render pipeline. The `onload` attribute
+ * then switches the `rel` attribute back to "stylesheet" once it has loaded,
+ * applying the fonts to the page. A <noscript> fallback is included for
+ * browsers with JavaScript disabled.
+ *
+ * IMPACT: Improves FCP/LCP scores by eliminating a render-blocking resource.
+ *
+ * @param string $html   The original HTML <link> tag.
+ * @param string $handle The style's registered handle.
+ * @return string The modified HTML tag.
+ */
+function webbiecorn_preload_google_fonts($html, $handle) {
+    if ($handle === 'webbiecorn-fonts') {
+        // Preload the stylesheet
+        $preload_html = str_replace(
+            "rel='stylesheet'",
+            "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"",
+            $html
+        );
+
+        // Provide a fallback for browsers with JavaScript disabled
+        $noscript_html = '<noscript>' . $html . '</noscript>';
+
+        return $preload_html . $noscript_html;
+    }
+    return $html;
+}
+add_filter('style_loader_tag', 'webbiecorn_preload_google_fonts', 10, 2);
