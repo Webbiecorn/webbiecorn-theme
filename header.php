@@ -134,11 +134,6 @@ if (is_front_page()) {
     <link rel="shortcut icon" href="<?php echo esc_url(home_url('/favicon.ico')); ?>">
     <link rel="apple-touch-icon" href="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>">
     
-    <!-- Preload Critical Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#E30613">
