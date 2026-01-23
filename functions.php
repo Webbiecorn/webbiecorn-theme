@@ -62,5 +62,8 @@ require_once WEBBIECORN_INC . '/helpers.php';
 // Head cleanup (remove version, disable emojis)
 require_once WEBBIECORN_INC . '/cleanup.php';
 
+// Security enhancements (headers, etc.)
+require_once WEBBIECORN_INC . '/security.php';
+
 // Schema.org structured data
 require_once WEBBIECORN_INC . '/schema.php';
