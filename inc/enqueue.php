@@ -124,3 +124,27 @@ function webbiecorn_resource_hints($urls, $relation_type) {
     return $urls;
 }
 add_filter('wp_resource_hints', 'webbiecorn_resource_hints', 10, 2);
+
+
+/**
+ * Asynchronously load Google Fonts.
+ *
+ * @param string $html   The link tag for the enqueued style.
+ * @param string $handle The style's registered handle.
+ * @return string The modified link tag.
+ */
+function webbiecorn_starter_google_fonts_async($html, $handle) {
+    // Target only the 'webbiecorn-fonts' stylesheet
+    if ($handle === 'webbiecorn-fonts') {
+        // The async version for JS-enabled browsers.
+        $async_html = str_replace("rel='stylesheet'", "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"", $html);
+
+        // The noscript fallback for non-JS browsers, using the original $html.
+        $noscript_html = '<noscript>' . $html . '</noscript>';
+
+        // Return both.
+        return $async_html . $noscript_html;
+    }
+    return $html;
+}
+add_filter('style_loader_tag', 'webbiecorn_starter_google_fonts_async', 10, 2);
