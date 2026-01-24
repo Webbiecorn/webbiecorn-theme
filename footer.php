@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
             <!-- Brand Column -->
             <div class="wc-footer__brand">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="wc-footer__logo">
-                    <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="Webbiecorn" class="wc-footer__logo-img">
+                    <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="" class="wc-footer__logo-img">
                     <span class="wc-footer__logo-text">WEBBIECORN</span>
                 </a>
                 <p class="wc-footer__description">
