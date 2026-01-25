@@ -29,21 +29,16 @@ function webbiecorn_starter_scripts() {
     );
     
     // =========================================================================
-    // CSS - Base (always loaded)
+    // CSS - Bundled (always loaded)
     // =========================================================================
-    wp_enqueue_style('wc-base', $theme_uri . '/assets/css/base.css', array('webbiecorn-fonts'), $version);
-    wp_enqueue_style('wc-header', $theme_uri . '/assets/css/header.css', array('wc-base'), $version);
-    wp_enqueue_style('wc-buttons', $theme_uri . '/assets/css/buttons.css', array('wc-base'), $version);
-    wp_enqueue_style('wc-footer', $theme_uri . '/assets/css/footer.css', array('wc-base'), $version);
-    wp_enqueue_style('wc-animations', $theme_uri . '/assets/css/animations.css', array('wc-base'), $version);
-    wp_enqueue_style('wc-responsive', $theme_uri . '/assets/css/responsive.css', array('wc-base'), $version);
-    wp_enqueue_style('wc-cookie', $theme_uri . '/assets/css/cookie-consent.css', array('wc-base'), $version);
+    // ⚡ Bolt: Combine common stylesheets into a single bundle to reduce HTTP requests.
+    wp_enqueue_style('wc-bundle', $theme_uri . '/assets/css/bundle.css', array('webbiecorn-fonts'), $version);
     
     // Main stylesheet (fallback for any remaining styles)
     wp_enqueue_style(
         'webbiecorn-starter-style',
         get_stylesheet_uri(),
-        array('wc-base'),
+        array('wc-bundle'),
         $version
     );
     
@@ -53,25 +48,25 @@ function webbiecorn_starter_scripts() {
     
     // Homepage
     if (is_front_page()) {
-        wp_enqueue_style('wc-hero', $theme_uri . '/assets/css/hero.css', array('wc-base'), $version);
-        wp_enqueue_style('wc-services', $theme_uri . '/assets/css/services.css', array('wc-base'), $version);
-        wp_enqueue_style('wc-homepage-sections', $theme_uri . '/assets/css/homepage-sections.css', array('wc-base'), $version);
+        wp_enqueue_style('wc-hero', $theme_uri . '/assets/css/hero.css', array('wc-bundle'), $version);
+        wp_enqueue_style('wc-services', $theme_uri . '/assets/css/services.css', array('wc-bundle'), $version);
+        wp_enqueue_style('wc-homepage-sections', $theme_uri . '/assets/css/homepage-sections.css', array('wc-bundle'), $version);
     }
     
     // Portfolio page - V2 clean design
     if (is_page('portfolio') || is_page('projecten')) {
-        wp_enqueue_style('wc-portfolio-v2', $theme_uri . '/assets/css/portfolio-v2.css', array('wc-base'), $version);
+        wp_enqueue_style('wc-portfolio-v2', $theme_uri . '/assets/css/portfolio-v2.css', array('wc-bundle'), $version);
     }
     
     // Service pages with pricing
     if (is_page('webdesign') || is_page('diensten') || is_page('hosting') || is_page('onderhoud') || is_page('branding') || is_page('seo-analyse')) {
-        wp_enqueue_style('wc-pricing', $theme_uri . '/assets/css/pricing.css', array('wc-base'), $version);
-        wp_enqueue_style('wc-pages', $theme_uri . '/assets/css/pages.css', array('wc-base'), $version);
+        wp_enqueue_style('wc-pricing', $theme_uri . '/assets/css/pricing.css', array('wc-bundle'), $version);
+        wp_enqueue_style('wc-pages', $theme_uri . '/assets/css/pages.css', array('wc-bundle'), $version);
     }
     
     // Other pages
     if (is_page() && !is_front_page()) {
-        wp_enqueue_style('wc-pages', $theme_uri . '/assets/css/pages.css', array('wc-base'), $version);
+        wp_enqueue_style('wc-pages', $theme_uri . '/assets/css/pages.css', array('wc-bundle'), $version);
     }
     
     // =========================================================================
