@@ -21,6 +21,26 @@ php -l template-parts/*.php
 php -l page-*.php
 ```
 
+## Asset Management
+
+### CSS Bundling
+
+To improve performance, common CSS files are bundled into a single file at `assets/css/bundle.css`. If you modify any of the following base CSS files, you must regenerate the bundle:
+
+- `assets/css/base.css`
+- `assets/css/header.css`
+- `assets/css/buttons.css`
+- `assets/css/footer.css`
+- `assets/css/animations.css`
+- `assets/css/responsive.css`
+- `assets/css/cookie-consent.css`
+
+To regenerate the bundle, run the following script from the theme root:
+
+```bash
+./scripts/bundle-css.sh
+```
+
 ## Deploy
 See `DEPLOY.md` (centrale deploy-handleiding, incl. SSH key-based deploy en `Host webbiecorn`).
 
