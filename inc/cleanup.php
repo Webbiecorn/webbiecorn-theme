@@ -47,3 +47,17 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Add security headers to prevent common attacks
+ *
+ * - X-Content-Type-Options: Prevents MIME-sniffing attacks.
+ * - X-Frame-Options: Protects against clickjacking.
+ * - Referrer-Policy: Controls how much referrer information is sent.
+ */
+function webbiecorn_add_security_headers() {
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('Referrer-Policy: no-referrer-when-downgrade');
+}
+add_action('send_headers', 'webbiecorn_add_security_headers');
