@@ -221,3 +221,33 @@ p {
   color: var(--wc-white);
 }
 
+
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+.skip-to-content {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.skip-to-content:focus {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: auto;
+    height: auto;
+    padding: 15px;
+    background-color: var(--wc-dark);
+    color: var(--wc-white);
+    border-radius: var(--wc-radius-md);
+    box-shadow: var(--wc-shadow-lg);
+    text-decoration: none;
+    font-weight: 600;
+}
