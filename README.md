@@ -21,6 +21,21 @@ php -l template-parts/*.php
 php -l page-*.php
 ```
 
+## CSS Bundling
+To improve performance, this theme bundles its core CSS files into a single file (`assets/css/bundle.css`). If you make changes to any of the following files:
+- `assets/css/base.css`
+- `assets/css/header.css`
+- `assets/css/buttons.css`
+- `assets/css/footer.css`
+- `assets/css/animations.css`
+- `assets/css/responsive.css`
+- `assets/css/cookie-consent.css`
+
+You must run the build script to regenerate the bundle:
+```bash
+./assets/build-css.sh
+```
+
 ## Deploy
 See `DEPLOY.md` (centrale deploy-handleiding, incl. SSH key-based deploy en `Host webbiecorn`).
 
