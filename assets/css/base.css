@@ -221,3 +221,23 @@ p {
   color: var(--wc-white);
 }
 
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: var(--wc-space-sm) var(--wc-space-md);
+    background-color: var(--wc-primary);
+    color: var(--wc-white);
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 9999;
+    transform: translateY(-150%);
+    transition: transform var(--wc-transition-base);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
