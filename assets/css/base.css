@@ -221,3 +221,27 @@ p {
   color: var(--wc-white);
 }
 
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -150%); /* Start off-screen */
+    padding: var(--wc-space-sm) var(--wc-space-lg);
+    background-color: var(--wc-primary);
+    color: var(--wc-white);
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 0 0 var(--wc-radius-lg) var(--wc-radius-lg);
+    box-shadow: var(--wc-shadow-lg);
+    transition: transform var(--wc-transition-base);
+}
+
+.skip-link:focus {
+    transform: translate(-50%, 0); /* Move into view on focus */
+}
