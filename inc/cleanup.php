@@ -47,3 +47,17 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Add security headers to prevent clickjacking and MIME-sniffing.
+ *
+ * @since 2.3.1
+ */
+function sentinel_add_security_headers() {
+    // Prevent MIME-sniffing
+    header('X-Content-Type-Options: nosniff');
+
+    // Prevent clickjacking
+    header('X-Frame-Options: SAMEORIGIN');
+}
+add_action('send_headers', 'sentinel_add_security_headers');
