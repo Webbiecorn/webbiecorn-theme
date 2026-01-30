@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <article class="wc-teaser-card wc-animate" data-animate="teaser">
                 <div class="wc-teaser-card__visual">
                     <div class="wc-teaser-card__placeholder wc-teaser-card__placeholder--image">
-                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-buurtapp-2.png" alt="Buurt/Conciërge App" class="wc-teaser-card__img">
+                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-buurtapp-2.png" alt="Buurt/Conciërge App" class="wc-teaser-card__img" loading="lazy" decoding="async">
                     </div>
                     <div class="wc-teaser-card__badge wc-teaser-card__badge--live">Live</div>
                 </div>
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <article class="wc-teaser-card wc-animate" data-animate="teaser">
                 <div class="wc-teaser-card__visual">
                     <div class="wc-teaser-card__placeholder wc-teaser-card__placeholder--image">
-                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-gifteez-website-4.png" alt="Gifteez Cadeauplatform" class="wc-teaser-card__img">
+                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-gifteez-website-4.png" alt="Gifteez Cadeauplatform" class="wc-teaser-card__img" loading="lazy" decoding="async">
                     </div>
                     <div class="wc-teaser-card__badge">In Development</div>
                 </div>
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <article class="wc-teaser-card wc-animate" data-animate="teaser">
                 <div class="wc-teaser-card__visual">
                     <div class="wc-teaser-card__placeholder wc-teaser-card__placeholder--image">
-                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-webbiecorn-website-1.png" alt="Webbiecorn Website" class="wc-teaser-card__img">
+                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-webbiecorn-website-1.png" alt="Webbiecorn Website" class="wc-teaser-card__img" loading="lazy" decoding="async">
                     </div>
                     <div class="wc-teaser-card__badge wc-teaser-card__badge--live">Live</div>
                 </div>
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <article class="wc-teaser-card wc-animate" data-animate="teaser">
                 <div class="wc-teaser-card__visual">
                     <div class="wc-teaser-card__placeholder wc-teaser-card__placeholder--image">
-                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-virtualdesign-1.png" alt="Visual Design Assets" class="wc-teaser-card__img">
+                        <img src="https://webbiecorn.nl/wp-content/uploads/2025/12/portfolio-virtualdesign-1.png" alt="Visual Design Assets" class="wc-teaser-card__img" loading="lazy" decoding="async">
                     </div>
                     <div class="wc-teaser-card__badge wc-teaser-card__badge--live">Live</div>
                 </div>
@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <!-- Logo -->
                     <div class="wc-about__logo-wrapper">
-                        <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="Webbiecorn Logo" class="wc-about__logo-anim" id="aboutLogo">
+                        <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="Webbiecorn Logo" class="wc-about__logo-anim" id="aboutLogo" loading="lazy" decoding="async">
                     </div>
                     
                     <!-- Glow Text -->

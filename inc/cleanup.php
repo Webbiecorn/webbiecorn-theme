@@ -47,3 +47,46 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Optimize asset loading
+ * Dequeue WooCommerce assets on non-shop pages
+ * Dequeue block library on front page
+ *
+ * @since 2.3.1
+ */
+function webbiecorn_optimize_assets() {
+    // 1. Dequeue WooCommerce assets on non-shop pages
+    // Check if WooCommerce is active and we are not on a shop-related page
+    if (class_exists('WooCommerce')) {
+        $is_woo_page = false;
+        if (function_exists('is_woocommerce') && is_woocommerce()) $is_woo_page = true;
+        if (function_exists('is_cart') && is_cart()) $is_woo_page = true;
+        if (function_exists('is_checkout') && is_checkout()) $is_woo_page = true;
+        if (function_exists('is_account_page') && is_account_page()) $is_woo_page = true;
+
+        // Also check for the custom shop page template
+        if (is_page_template('page-shop.php')) $is_woo_page = true;
+
+        if (!$is_woo_page) {
+            wp_dequeue_style('woocommerce-layout');
+            wp_dequeue_style('woocommerce-smallscreen');
+            wp_dequeue_style('woocommerce-general');
+            wp_dequeue_style('woocommerce-inline');
+            wp_dequeue_script('wc-add-to-cart');
+            wp_dequeue_script('cart-fragments');
+            wp_dequeue_script('woocommerce');
+            wp_dequeue_script('wc-cart-fragments');
+        }
+    }
+
+    // 2. Dequeue block library CSS on front page (since it's all custom HTML)
+    // This significantly reduces the amount of unused CSS on the most visited page
+    if (is_front_page()) {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('wc-blocks-style');
+        wp_dequeue_style('wc-all-blocks-style'); // WooCommerce blocks
+    }
+}
+add_action('wp_enqueue_scripts', 'webbiecorn_optimize_assets', 99);
