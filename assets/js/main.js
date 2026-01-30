@@ -161,6 +161,15 @@
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+
+                // Focus management for accessibility
+                if (!targetElement.hasAttribute('tabindex')) {
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.addEventListener('blur', function() {
+                        targetElement.removeAttribute('tabindex');
+                    }, { once: true });
+                }
+                targetElement.focus({ preventScroll: true });
             });
         });
     }
