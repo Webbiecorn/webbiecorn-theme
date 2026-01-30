@@ -47,3 +47,21 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Add security headers to the site
+ *
+ * nosniff: prevents the browser from interpreting files as something else than declared
+ * SAMEORIGIN: prevents the site from being framed by other sites (Clickjacking protection)
+ * XSS-Protection: enables the XSS filter in older browsers
+ * Referrer-Policy: controls how much referrer information is passed
+ */
+function webbiecorn_add_security_headers() {
+    if (!headers_sent()) {
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: SAMEORIGIN');
+        header('X-XSS-Protection: 1; mode=block');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
+    }
+}
+add_action('send_headers', 'webbiecorn_add_security_headers');
