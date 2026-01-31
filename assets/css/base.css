@@ -148,6 +148,37 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: auto;
 }
 
+/* Accessibility Utilities */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.skip-link:focus {
+  background: var(--wc-primary);
+  color: var(--wc-white);
+  clip: auto !important;
+  clip-path: none;
+  height: auto;
+  width: auto;
+  top: 1rem;
+  left: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--wc-radius-full);
+  z-index: 9999;
+  font-weight: 600;
+  box-shadow: var(--wc-shadow-xl);
+  text-decoration: none;
+}
+
 .wc-card {
   border-radius: var(--wc-radius-xl);
   border: 1px solid var(--wc-border);
