@@ -161,6 +161,20 @@
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+
+                // Accessibility: Manage focus for the target element
+                const needsTabindex = !targetElement.hasAttribute('tabindex');
+                if (needsTabindex) {
+                    targetElement.setAttribute('tabindex', '-1');
+                }
+                targetElement.focus({ preventScroll: true });
+
+                // Remove tabindex on blur only if we added it, to keep the DOM clean
+                if (needsTabindex) {
+                    targetElement.addEventListener('blur', function() {
+                        targetElement.removeAttribute('tabindex');
+                    }, { once: true });
+                }
             });
         });
     }
