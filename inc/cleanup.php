@@ -33,6 +33,19 @@ function webbiecorn_disable_emojis() {
 }
 add_action('init', 'webbiecorn_disable_emojis');
 
+/**
+ * Add security headers
+ */
+function webbiecorn_security_headers() {
+    if (!is_admin()) {
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: SAMEORIGIN');
+        header('X-XSS-Protection: 1; mode=block');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
+    }
+}
+add_action('send_headers', 'webbiecorn_security_headers');
+
 function webbiecorn_disable_emojis_tinymce($plugins) {
     if (is_array($plugins)) {
         return array_diff($plugins, array('wpemoji'));
