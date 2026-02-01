@@ -47,3 +47,14 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Dequeue WooCommerce cart fragments on non-shop pages
+ * High-impact: prevents blocking AJAX request (?wc-ajax=get_refreshed_fragments)
+ */
+function webbiecorn_dequeue_cart_fragments() {
+    if (function_exists('is_woocommerce') && !is_woocommerce() && !is_cart() && !is_checkout()) {
+        wp_dequeue_script('wc-cart-fragments');
+    }
+}
+add_action('wp_enqueue_scripts', 'webbiecorn_dequeue_cart_fragments', 11);

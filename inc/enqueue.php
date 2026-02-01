@@ -108,13 +108,13 @@ function webbiecorn_starter_scripts() {
 add_action('wp_enqueue_scripts', 'webbiecorn_starter_scripts');
 
 /**
- * Add preconnect for Google Fonts
+ * Add preconnect resource hints for Google Fonts
+ * Optimized: Removed crossorigin from fonts.googleapis.com
  */
 function webbiecorn_resource_hints($urls, $relation_type) {
     if ($relation_type === 'preconnect') {
         $urls[] = array(
             'href' => 'https://fonts.googleapis.com',
-            'crossorigin' => 'anonymous',
         );
         $urls[] = array(
             'href' => 'https://fonts.gstatic.com',
