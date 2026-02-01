@@ -1,0 +1,3 @@
+## 2026-02-01 - Redundant Resource Hints and WooCommerce AJAX Optimization
+**Learning:** Hardcoding preconnect links in `header.php` while also using `wp_resource_hints` creates duplicate meta tags, increasing head size without benefit. Additionally, WooCommerce `wc-cart-fragments` triggers a heavy AJAX request on every page load, which is unnecessary if no dynamic cart counter exists in the header.
+**Action:** Consolidate resource hints into `inc/enqueue.php` using the `wp_resource_hints` filter and ensure `crossorigin` is only applied to `fonts.gstatic.com`. Dequeue `wc-cart-fragments` on non-WooCommerce pages to improve TTFB.
