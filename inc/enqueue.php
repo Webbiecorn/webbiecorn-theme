@@ -114,7 +114,6 @@ function webbiecorn_resource_hints($urls, $relation_type) {
     if ($relation_type === 'preconnect') {
         $urls[] = array(
             'href' => 'https://fonts.googleapis.com',
-            'crossorigin' => 'anonymous',
         );
         $urls[] = array(
             'href' => 'https://fonts.gstatic.com',
