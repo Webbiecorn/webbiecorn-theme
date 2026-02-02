@@ -47,3 +47,14 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Dequeue unnecessary scripts and styles
+ */
+function webbiecorn_performance_cleanups() {
+    // Disable WooCommerce cart fragments on non-shop pages to prevent blocking AJAX request
+    if (class_exists('WooCommerce') && !is_woocommerce() && !is_cart() && !is_checkout() && !is_account_page()) {
+        wp_dequeue_script('wc-cart-fragments');
+    }
+}
+add_action('wp_enqueue_scripts', 'webbiecorn_performance_cleanups', 100);
