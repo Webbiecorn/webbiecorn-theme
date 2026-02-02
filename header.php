@@ -194,15 +194,17 @@ if (is_front_page()) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e('Skip to content', 'webbiecorn-starter'); ?></a>
+
 <header class="wc-header" id="header">
     <div class="wc-header__container">
         <div class="wc-header__inner">
             <!-- Logo -->
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="wc-logo">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="wc-logo" aria-label="<?php esc_attr_e('Webbiecorn Home', 'webbiecorn-starter'); ?>">
                 <div class="wc-logo__icon">
-                    <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="Webbiecorn">
+                    <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="">
                 </div>
-                <span class="wc-logo__text">WEBBIECORN</span>
+                <span class="wc-logo__text" aria-hidden="true">WEBBIECORN</span>
             </a>
 
             <!-- Navigation -->

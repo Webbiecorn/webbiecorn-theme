@@ -150,13 +150,15 @@
   z-index: 100;
 }
 
-.wc-nav__item--dropdown:hover .wc-nav__dropdown {
+.wc-nav__item--dropdown:hover .wc-nav__dropdown,
+.wc-nav__item--dropdown:focus-within .wc-nav__dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
 
-.wc-nav__item--dropdown:hover .wc-nav__link svg {
+.wc-nav__item--dropdown:hover .wc-nav__link svg,
+.wc-nav__item--dropdown:focus-within .wc-nav__link svg {
   transform: rotate(180deg);
 }
 
