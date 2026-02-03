@@ -128,6 +128,48 @@ ul, ol {
 }
 
 /* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+/**
+ * .screen-reader-text
+ * Accessible hiding for screen readers.
+ */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus,
+.skip-link:focus {
+  background-color: var(--wc-bg);
+  border-radius: var(--wc-radius-md);
+  box-shadow: var(--wc-shadow-xl);
+  clip: auto !important;
+  clip-path: none !important;
+  color: var(--wc-primary);
+  display: block;
+  font-size: var(--wc-text-sm);
+  font-weight: 700;
+  height: auto;
+  left: var(--wc-space-md);
+  line-height: normal;
+  padding: var(--wc-space-md) var(--wc-space-lg);
+  text-decoration: none;
+  top: var(--wc-space-md);
+  width: auto;
+  z-index: 100001;
+}
+
+/* ==========================================================================
    Typography
    ========================================================================== */
 

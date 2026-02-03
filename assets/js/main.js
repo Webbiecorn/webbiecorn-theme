@@ -139,7 +139,7 @@
     }
 
     /**
-     * Smooth scroll for anchor links
+     * Smooth scroll for anchor links and focus management
      */
     function initSmoothScroll() {
         const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -161,6 +161,16 @@
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+
+                // A11y: Manage focus for the target element
+                if (!targetElement.matches('a, button, input, select, textarea, [tabindex]')) {
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.addEventListener('blur', function blurHandler() {
+                        targetElement.removeAttribute('tabindex');
+                        targetElement.removeEventListener('blur', blurHandler);
+                    }, { once: true });
+                }
+                targetElement.focus({ preventScroll: true });
             });
         });
     }
