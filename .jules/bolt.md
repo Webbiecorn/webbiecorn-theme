@@ -1,0 +1,3 @@
+## 2025-05-15 - Conditional Asset Dequeuing
+**Learning:** WordPress themes often load assets (like WooCommerce scripts or Gutenberg blocks) globally even when they aren't needed on specific pages. Specifically, `wc-cart-fragments` triggers an AJAX request on every page load, which can be a significant bottleneck.
+**Action:** Always implement conditional dequeuing in `inc/cleanup.php` or `inc/enqueue.php`. Use `is_front_page()` to disable block styles if the hero is custom-coded, and use WooCommerce conditional tags (`is_woocommerce`, `is_cart`, etc.) to disable cart fragments on non-shop pages.

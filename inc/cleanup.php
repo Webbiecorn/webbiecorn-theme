@@ -47,3 +47,42 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Remove unnecessary items from wp_head
+ */
+function webbiecorn_head_cleanup() {
+    // RSD link
+    remove_action('wp_head', 'rsd_link');
+    // Windows Live Writer manifest
+    remove_action('wp_head', 'wlwmanifest_link');
+    // Shortlink
+    remove_action('wp_head', 'wp_shortlink_wp_head');
+    // REST API link
+    remove_action('wp_head', 'rest_output_link_wp_head');
+    // oEmbed discovery links
+    remove_action('wp_head', 'wp_oembed_add_discovery_links');
+    // REST API link in HTTP headers
+    remove_action('template_redirect', 'rest_output_link_header', 11);
+}
+add_action('init', 'webbiecorn_head_cleanup');
+
+/**
+ * Performance cleanups: Dequeue unnecessary scripts/styles
+ */
+function webbiecorn_performance_cleanups() {
+    // Disable WooCommerce cart fragments on non-shop pages
+    if (function_exists('is_woocommerce')) {
+        if (!is_woocommerce() && !is_cart() && !is_checkout() && !is_account_page()) {
+            wp_dequeue_script('wc-cart-fragments');
+        }
+    }
+
+    // Disable Gutenberg blocks on front page (custom HTML hero/sections used)
+    if (is_front_page()) {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('wc-block-style');
+    }
+}
+add_action('wp_enqueue_scripts', 'webbiecorn_performance_cleanups', 100);
