@@ -139,7 +139,7 @@
     }
 
     /**
-     * Smooth scroll for anchor links
+     * Smooth scroll for anchor links with focus management
      */
     function initSmoothScroll() {
         const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -161,6 +161,17 @@
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+
+                // Move focus to target for accessibility
+                if (!/^(?:a|select|input|button|textarea)$/i.test(targetElement.tagName)) {
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.style.outline = 'none';
+                    targetElement.addEventListener('blur', () => {
+                        targetElement.removeAttribute('tabindex');
+                        targetElement.style.outline = '';
+                    }, { once: true });
+                }
+                targetElement.focus({ preventScroll: true });
             });
         });
     }
