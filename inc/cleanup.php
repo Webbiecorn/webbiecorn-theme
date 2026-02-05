@@ -16,6 +16,23 @@ if (!defined('ABSPATH')) {
 remove_action('wp_head', 'wp_generator');
 
 /**
+ * Clean up WordPress head by removing unnecessary metadata and links.
+ */
+function webbiecorn_head_cleanup() {
+    // Remove EditURI link
+    remove_action('wp_head', 'rsd_link');
+    // Remove Windows Live Writer manifest link
+    remove_action('wp_head', 'wlwmanifest_link');
+    // Remove shortlink from head
+    remove_action('wp_head', 'wp_shortlink_wp_head');
+    // Remove REST API link
+    remove_action('wp_head', 'rest_output_link_wp_head');
+    // Remove oEmbed discovery links
+    remove_action('wp_head', 'wp_oembed_add_discovery_links');
+}
+add_action('init', 'webbiecorn_head_cleanup');
+
+/**
  * Disable WordPress emoji scripts (not needed, causes CSP issues)
  */
 function webbiecorn_disable_emojis() {
@@ -47,3 +64,26 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Dequeue WooCommerce assets on non-shop pages to improve performance.
+ * This also prevents the wc-ajax=get_refreshed_fragments request.
+ */
+function webbiecorn_performance_cleanups() {
+    // Check if WooCommerce is active
+    if (!class_exists('WooCommerce')) {
+        return;
+    }
+
+    // Only load WooCommerce assets on shop-related pages
+    if (!is_woocommerce() && !is_cart() && !is_checkout() && !is_account_page()) {
+        wp_dequeue_style('woocommerce-layout');
+        wp_dequeue_style('woocommerce-smallscreen');
+        wp_dequeue_style('woocommerce-general');
+        wp_dequeue_style('wc-blocks-style');
+        wp_dequeue_script('wc-cart-fragments');
+        wp_dequeue_script('woocommerce');
+        wp_dequeue_script('wc-add-to-cart');
+    }
+}
+add_action('wp_enqueue_scripts', 'webbiecorn_performance_cleanups', 100);
