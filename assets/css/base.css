@@ -221,3 +221,47 @@ p {
   color: var(--wc-white);
 }
 
+/* ==========================================================================
+   Accessibility Utilities
+   ========================================================================== */
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.skip-link {
+  left: -9999px;
+  position: absolute;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  background-color: var(--wc-primary);
+  border-radius: 0 0 var(--wc-radius-lg) var(--wc-radius-lg);
+  box-shadow: var(--wc-shadow-xl);
+  clip: auto !important;
+  clip-path: none !important;
+  color: #fff;
+  display: block;
+  font-size: var(--wc-text-sm);
+  font-weight: 700;
+  height: auto;
+  left: 20px;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  top: 0;
+  width: auto;
+}

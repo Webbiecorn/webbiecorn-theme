@@ -194,6 +194,8 @@ if (is_front_page()) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e('Skip to content', 'webbiecorn-starter'); ?></a>
+
 <header class="wc-header" id="header">
     <div class="wc-header__container">
         <div class="wc-header__inner">
@@ -240,7 +242,7 @@ if (is_front_page()) {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
                 
-                <button class="wc-menu-toggle" id="menuToggle" aria-label="<?php esc_attr_e('Menu openen', 'webbiecorn-starter'); ?>" aria-expanded="false">
+                <button class="wc-menu-toggle" id="menuToggle" aria-label="<?php esc_attr_e('Menu openen', 'webbiecorn-starter'); ?>" aria-expanded="false" aria-controls="mobileMenu">
                     <span></span>
                     <span></span>
                     <span></span>
