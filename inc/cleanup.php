@@ -47,3 +47,19 @@ function webbiecorn_disable_emojis_remove_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+/**
+ * Add security headers
+ *
+ * Implements defense in depth by adding standard security headers.
+ * Restricted to non-admin pages to avoid interference with the WP dashboard.
+ */
+function webbiecorn_security_headers() {
+    if (!is_admin()) {
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: SAMEORIGIN');
+        header('X-XSS-Protection: 1; mode=block');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
+    }
+}
+add_action('send_headers', 'webbiecorn_security_headers');
