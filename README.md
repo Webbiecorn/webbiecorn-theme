@@ -12,6 +12,13 @@ Custom WordPress theme for https://webbiecorn.nl.
 This repo lives inside a WordPress install (typically under `wp-content/themes/webbiecorn-starter-v2/`).
 Activate the theme in WP Admin.
 
+### Asset Bundling
+This theme bundles common CSS files for performance. If you edit a CSS file in `assets/css/`, you must regenerate the bundle by running:
+```bash
+./scripts/bundle-css.sh
+```
+This will update `assets/css/bundle.css`. Do not edit the bundle file directly.
+
 ## Quality checks
 PHP lint:
 ```bash
