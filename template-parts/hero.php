@@ -97,7 +97,7 @@ if ($title_accent) {
             <div class="wc-contact-hero__stats">
                 <?php foreach ($stats as $stat) : ?>
                 <span class="wc-contact-stat">
-                    <span class="wc-contact-stat__icon"><?php echo $stat['icon']; ?></span>
+                    <span class="wc-contact-stat__icon"><?php echo wp_kses_post($stat['icon']); ?></span>
                     <span class="wc-contact-stat__text"><?php echo esc_html($stat['text']); ?></span>
                 </span>
                 <?php endforeach; ?>
