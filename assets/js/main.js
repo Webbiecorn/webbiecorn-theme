@@ -51,8 +51,14 @@
         
         if (!menuToggle) return;
 
+        // Set initial state for screen readers
+        const initialAriaLabel = 'Menu openen';
+        menuToggle.setAttribute('aria-label', initialAriaLabel);
+        menuToggle.setAttribute('aria-expanded', 'false');
+
         menuToggle.addEventListener('click', function() {
             const isOpen = menuToggle.classList.toggle('active');
+
             if (mobileMenu) {
                 if (isOpen) {
                     mobileMenu.style.display = 'flex';
