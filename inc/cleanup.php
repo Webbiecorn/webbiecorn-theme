@@ -16,6 +16,15 @@ if (!defined('ABSPATH')) {
 remove_action('wp_head', 'wp_generator');
 
 /**
+ * Remove unnecessary header links for security hardening
+ */
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'rest_output_link_wp_head');
+remove_action('wp_head', 'wp_oembed_add_discovery_links');
+remove_action('wp_head', 'wp_shortlink_wp_head');
+
+/**
  * Disable WordPress emoji scripts (not needed, causes CSP issues)
  */
 function webbiecorn_disable_emojis() {
