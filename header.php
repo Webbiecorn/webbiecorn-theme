@@ -55,7 +55,7 @@ if (is_front_page()) {
     );
 } elseif (is_singular('post')) {
     $seo_data = array(
-        'title' => get_the_title() . ' | Webbiecorn Blog',
+        'title' => esc_html(get_the_title()) . ' | Webbiecorn Blog',
         'description' => wp_strip_all_tags(get_the_excerpt()) ?: 'Lees het laatste nieuws en tips over webdesign, development en online marketing van Webbiecorn.',
         'keywords' => 'webdesign blog, website tips, online marketing, SEO tips'
     );
@@ -63,7 +63,7 @@ if (is_front_page()) {
     // Fallback voor andere paginas
     $page_title = get_the_title();
     if ($page_title) {
-        $seo_data['title'] = $page_title . ' | Webbiecorn';
+        $seo_data['title'] = esc_html($page_title) . ' | Webbiecorn';
         $excerpt = wp_strip_all_tags(get_the_excerpt());
         if ($excerpt) {
             $seo_data['description'] = $excerpt;
