@@ -57,9 +57,11 @@
                 if (isOpen) {
                     mobileMenu.style.display = 'flex';
                     setTimeout(() => mobileMenu.classList.add('active'), 10);
+                    this.setAttribute('aria-label', 'Menu sluiten');
                 } else {
                     mobileMenu.classList.remove('active');
                     setTimeout(() => mobileMenu.style.display = 'none', 400);
+                    this.setAttribute('aria-label', 'Menu openen');
                 }
             }
             document.body.classList.toggle('menu-open');
@@ -90,6 +92,7 @@
                     setTimeout(() => mobileMenu.style.display = 'none', 400);
                     document.body.classList.remove('menu-open');
                     menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-label', 'Menu openen');
                 });
             });
         }
@@ -103,6 +106,7 @@
                 }
                 document.body.classList.remove('menu-open');
                 menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Menu openen');
             }
         });
     }
