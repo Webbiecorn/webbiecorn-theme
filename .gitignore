@@ -37,3 +37,6 @@ package-lock.json
 *.tmp
 *.temp
 *.swp
+
+# Deployment credentials
+sftp.json
