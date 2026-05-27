@@ -200,7 +200,7 @@ if (is_front_page()) {
             <!-- Logo -->
             <a href="<?php echo esc_url(home_url('/')); ?>" class="wc-logo">
                 <div class="wc-logo__icon">
-                    <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="Webbiecorn">
+                    <img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/12/webbiecorn-logo-red.png')); ?>" alt="">
                 </div>
                 <span class="wc-logo__text">WEBBIECORN</span>
             </a>
