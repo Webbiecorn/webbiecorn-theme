@@ -16957,3 +16957,35 @@ a.wc-contact-info__value:hover {
     box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1) !important;
 }
 
+
+/*
+==========================================================================
+ACCESSIBILITY
+==========================================================================
+*/
+
+.skip-to-content-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -9999;
+}
+
+.skip-to-content-link:focus {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: auto;
+    height: auto;
+    padding: 15px;
+    background-color: #0f0f23;
+    color: #ffffff;
+    border: 2px solid #E30613;
+    border-radius: 8px;
+    z-index: 99999;
+    text-decoration: none;
+    font-weight: 600;
+}
